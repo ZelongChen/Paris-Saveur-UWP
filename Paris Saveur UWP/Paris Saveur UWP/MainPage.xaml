@@ -194,7 +194,7 @@
                                             <Grid.RenderTransform>
                                                 <CompositeTransform x:Name="PivotLayoutElementTranslateTransform"/>
                                             </Grid.RenderTransform>
-                                            <Border Background="#FF34323F" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                            <Border Background="White" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                                             <ContentPresenter x:Name="LeftHeaderPresenter" ContentTemplate="{TemplateBinding LeftHeaderTemplate}" Content="{TemplateBinding LeftHeader}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                             <ContentControl x:Name="HeaderClipper" Grid.Column="1" HorizontalContentAlignment="Stretch" UseSystemFocusVisuals="True">
                                                 <ContentControl.Clip>
@@ -244,7 +244,7 @@
                     <Setter Property="FontWeight" Value="{ThemeResource PivotHeaderItemThemeFontWeight}" />
                     <Setter Property="CharacterSpacing" Value="{ThemeResource PivotHeaderItemCharacterSpacing}" />
                     <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
+                    <Setter Property="Foreground" Value="Gray" />
                     <Setter Property="Padding" Value="{ThemeResource PivotHeaderItemMargin}" />
                     <Setter Property="Height" Value="Auto" />
                     <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -255,11 +255,11 @@
                             <ControlTemplate TargetType="PivotHeaderItem">
                                 <Grid 
                         x:Name="Grid"
-                        Background="{TemplateBinding Background}">
+                        Background="Transparent">
                                     <Grid.Resources>
                                         <Style x:Key="BaseContentPresenterStyle" TargetType="ContentPresenter">
                                             <Setter Property="FontFamily" Value="Segoe UI"/>
-                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
                                             <Setter Property="FontSize" Value="15"/>
                                             <Setter Property="TextWrapping" Value="Wrap"/>
                                             <Setter Property="LineStackingStrategy" Value="MaxHeight"/>
@@ -301,36 +301,9 @@
                                                 <Storyboard>
                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="#FFE05C52" />
                                                     </ObjectAnimationUsingKeyFrames>
-                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid"
-                                                                       Storyboard.TargetProperty="Background" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="#FF42424C" />
-                                                    </ObjectAnimationUsingKeyFrames>
-                                                </Storyboard>
-                                            </VisualState>
-                                            <VisualState x:Name="UnselectedPointerOver">
-                                                <Storyboard>
-                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseMediumHighBrush}" />
-                                                    </ObjectAnimationUsingKeyFrames>
-                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid"
-                                                                       Storyboard.TargetProperty="Background" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}" />
-                                                    </ObjectAnimationUsingKeyFrames>
-                                                </Storyboard>
-                                            </VisualState>
-                                            <VisualState x:Name="SelectedPointerOver">
-                                                <Storyboard>
-                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                        Storyboard.TargetProperty="Foreground" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseMediumHighBrush}" />
-                                                    </ObjectAnimationUsingKeyFrames>
-                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid"
-                                                                       Storyboard.TargetProperty="Background" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}" />
-                                                    </ObjectAnimationUsingKeyFrames>
+
                                                 </Storyboard>
                                             </VisualState>
                                             <VisualState x:Name="UnselectedPressed">
@@ -341,7 +314,7 @@
                                                     </ObjectAnimationUsingKeyFrames>
                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid"
                                                                        Storyboard.TargetProperty="Background" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}" />
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="LightGray" />
                                                     </ObjectAnimationUsingKeyFrames>
                                                 </Storyboard>
                                             </VisualState>
@@ -349,11 +322,11 @@
                                                 <Storyboard>
                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseMediumHighBrush}" />
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="#FFE05C52" />
                                                     </ObjectAnimationUsingKeyFrames>
                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid"
                                                                        Storyboard.TargetProperty="Background" >
-                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}" />
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="LightGray" />
                                                     </ObjectAnimationUsingKeyFrames>
                                                 </Storyboard>
                                             </VisualState>
@@ -388,21 +361,31 @@
                     <local:TabHeader Label="Home" Glyph="&#xE80F;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 1."/>
+                <Grid>
+                    <Border Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="1"></Border>
+                    <TextBlock Text="Content of pivot item 1." HorizontalAlignment="Center"/>
+                </Grid>
+
             </PivotItem>            
             <PivotItem>
                 <PivotItem.Header>
                     <local:TabHeader Label="Cuisine" Glyph="&#xE8B7;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 3."/>
+                <Grid>
+                    <Border Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="1"></Border>
+                    <TextBlock Text="Content of pivot item 2." HorizontalAlignment="Center"/>
+                </Grid>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
                     <local:TabHeader Label="Message" Glyph="&#xE8BD;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 2."/>
+                <Grid>
+                    <Border Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="1"></Border>
+                    <TextBlock Text="Content of pivot item 3." HorizontalAlignment="Center"/>
+                </Grid>
             </PivotItem>
 
             <PivotItem>
@@ -410,7 +393,10 @@
                     <local:TabHeader Label="Me" Glyph="&#xE77B;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 3."/>
+                <Grid>
+                    <Border Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="1"></Border>
+                    <TextBlock Text="Content of pivot item 4." HorizontalAlignment="Center"/>
+                </Grid>
             </PivotItem>
         </Pivot>
     </Grid>
