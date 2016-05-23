@@ -20,14 +20,14 @@
                         <Setter Target="Panel.Height" Value="40" />
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="Wide">
+                <!--<VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Panel.Height" Value="50" />
                     </VisualState.Setters>
-                </VisualState>
+                </VisualState>-->
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel x:Name="Panel" Orientation="Horizontal" Background="{StaticResource AppThemeColor}">
