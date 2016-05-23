@@ -166,13 +166,13 @@
     <value>Nearby</value>
   </data>
   <data name="MainPage_Home_Recommended.Text" xml:space="preserve">
-    <value>Recommanded</value>
+    <value>Recommended</value>
   </data>
   <data name="MainPage_MessageTab.Label" xml:space="preserve">
     <value>Message</value>
   </data>
   <data name="MainPage_RecommandTab.Label" xml:space="preserve">
-    <value>Recommand</value>
+    <value>Recommended</value>
   </data>
   <data name="MainPage_SearchButton.Label" xml:space="preserve">
     <value>Search</value>
