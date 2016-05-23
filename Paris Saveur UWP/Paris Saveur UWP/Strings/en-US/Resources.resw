@@ -120,6 +120,30 @@
   <data name="MainPage_AccountTab.Label" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="MainPage_Account_About.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="MainPage_Account_Comment.Text" xml:space="preserve">
+    <value>Give us feedback</value>
+  </data>
+  <data name="MainPage_Account_Favorite.Text" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="MainPage_Account_Features.Text" xml:space="preserve">
+    <value>New features in this version</value>
+  </data>
+  <data name="MainPage_Account_Global.Text" xml:space="preserve">
+    <value>Switch language</value>
+  </data>
+  <data name="MainPage_Account_History.Text" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="MainPage_Account_Login.Text" xml:space="preserve">
+    <value>Click here to login</value>
+  </data>
+  <data name="MainPage_Account_Rate.Text" xml:space="preserve">
+    <value>Rate app in the store</value>
+  </data>
   <data name="MainPage_Header.Label" xml:space="preserve">
     <value>Home</value>
   </data>

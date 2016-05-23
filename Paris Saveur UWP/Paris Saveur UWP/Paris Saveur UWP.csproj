@@ -119,6 +119,7 @@
     <None Include="Paris Saveur UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\annonymous.jpg" />
     <Content Include="Assets\Icons\mainpage_hot.png" />
     <Content Include="Assets\Icons\mainpage_location.png" />
     <Content Include="Assets\Icons\mainpage_metro.png" />
@@ -150,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

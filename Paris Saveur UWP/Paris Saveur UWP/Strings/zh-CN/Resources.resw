@@ -120,6 +120,30 @@
   <data name="MainPage_AccountTab.Label" xml:space="preserve">
     <value> 我</value>
   </data>
+  <data name="MainPage_Account_About.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="MainPage_Account_Comment.Text" xml:space="preserve">
+    <value>意见反馈</value>
+  </data>
+  <data name="MainPage_Account_Favorite.Text" xml:space="preserve">
+    <value>本地收藏</value>
+  </data>
+  <data name="MainPage_Account_Features.Text" xml:space="preserve">
+    <value>新功能介绍</value>
+  </data>
+  <data name="MainPage_Account_Global.Text" xml:space="preserve">
+    <value>参观名显示方式</value>
+  </data>
+  <data name="MainPage_Account_History.Text" xml:space="preserve">
+    <value>浏览历史</value>
+  </data>
+  <data name="MainPage_Account_Login.Text" xml:space="preserve">
+    <value>点此登录</value>
+  </data>
+  <data name="MainPage_Account_Rate.Text" xml:space="preserve">
+    <value>在Windows Store中给我们评分</value>
+  </data>
   <data name="MainPage_Header.Label" xml:space="preserve">
     <value>首页</value>
   </data>
@@ -151,6 +175,6 @@
     <value>食单</value>
   </data>
   <data name="MainPage_SearchButton.Label" xml:space="preserve">
-    <value>索搜</value>
+    <value>搜索</value>
   </data>
 </root>

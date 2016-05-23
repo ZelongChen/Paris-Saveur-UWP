@@ -615,8 +615,105 @@
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
                 <Grid>
-                    <Border Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="1"></Border>
-                    <TextBlock Text="Content of pivot item 4." HorizontalAlignment="Center"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="1"></Border>
+                    <Grid Grid.Row="1" Background="#f2f2f2">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Height="40" Background="Transparent"></Border>
+
+                        <ListViewItem Grid.Row="1" Background="White">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="80">
+                                    <TextBlock Text="&#xE8D4;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" FontSize="50" Margin="10" AutomationProperties.Name="Account" />
+                                    <TextBlock x:Uid="MainPage_Account_Login" Text="" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource AppThemeColor}"></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewItem>
+
+                        <Border Grid.Row="2" Height="20" Background="Transparent"></Border>
+
+                        <ListViewHeaderItem Grid.Row="3" Background="White" Margin="0">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                    <TextBlock VerticalAlignment="Center" Margin="0,0,10,0" Text="&#xE121;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="History" />
+                                    <TextBlock x:Uid="MainPage_Account_History" Text="" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewHeaderItem>
+
+                        <ListViewHeaderItem Grid.Row="4" Background="White" Margin="0">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                    <TextBlock VerticalAlignment="Center" Margin="0,0,10,0" Text="&#xE735;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Favorite" />
+                                    <TextBlock x:Uid="MainPage_Account_Favorite" Text="" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewHeaderItem>
+
+                        <Border Grid.Row="5" Height="20" Background="Transparent"></Border>
+
+                        <ListViewHeaderItem Grid.Row="6" Background="White" Margin="0">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                    <TextBlock VerticalAlignment="Center" Margin="0,0,10,0" Text="&#xE774;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Global" />
+                                    <TextBlock x:Uid="MainPage_Account_Global" Text="" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewHeaderItem>
+
+                        <ListViewHeaderItem Grid.Row="7" Background="White" Margin="0">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                    <TextBlock VerticalAlignment="Center" Margin="0,0,10,0" Text="&#xE90A;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Comment" />
+                                    <TextBlock x:Uid="MainPage_Account_Comment" Text="" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewHeaderItem>
+
+                        <ListViewHeaderItem Grid.Row="8" Background="White" Margin="0">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                    <TextBlock VerticalAlignment="Center" Margin="0,0,10,0" Text="&#xE00B;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Rate" />
+                                    <TextBlock x:Uid="MainPage_Account_Rate" Text="" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewHeaderItem>
+
+                        <ListViewHeaderItem Grid.Row="9" Background="White" Margin="0">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                    <TextBlock VerticalAlignment="Center" Margin="0,0,10,0" Text="&#xE8EA;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="New Features" />
+                                    <TextBlock x:Uid="MainPage_Account_Features" Text="" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewHeaderItem>
+
+                        <ListViewHeaderItem Grid.Row="10" Background="White" Margin="0">
+                            <ContentControl>
+                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                    <TextBlock VerticalAlignment="Center" Margin="0,0,10,0" Text="&#xE946;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="About" />
+                                    <TextBlock x:Uid="MainPage_Account_About" Text="" VerticalAlignment="Center" ></TextBlock>
+                                </StackPanel>
+                            </ContentControl>
+                        </ListViewHeaderItem>
+                    </Grid>
                 </Grid>
             </PivotItem>
         </Pivot>

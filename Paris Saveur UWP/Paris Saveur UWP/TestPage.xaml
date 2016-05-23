@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="Paris_Saveur_UWP.TestPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paris_Saveur_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#f2f2f2">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Height="40" Background="Transparent"></Border>
+        
+        <ListViewItem Grid.Row="1" Background="White">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="80">
+                    <TextBlock Text="&#xE8D4;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" FontSize="50" Margin="10" AutomationProperties.Name="Account" />
+                    <TextBlock Text="Click here to login" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource AppThemeColor}"></TextBlock>
+                </StackPanel>
+            </ContentControl>
+        </ListViewItem>
+
+        <Border Grid.Row="2" Height="20" Background="Transparent"></Border>
+        
+        <ListViewHeaderItem Grid.Row="3" Background="White" Margin="0">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="Auto">
+                    <TextBlock Text="&#xE121;" VerticalAlignment="Center" Margin="0,0,10,0" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="History" />
+                    <TextBlock Text="Click here to login" VerticalAlignment="Center" ></TextBlock>
+                </StackPanel>
+            </ContentControl>
+        </ListViewHeaderItem>
+
+        <ListViewHeaderItem Grid.Row="4" Background="White" Margin="0">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="Auto">
+                    <TextBlock Text="&#xE735;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Favorite" />
+                </StackPanel>
+            </ContentControl>
+        </ListViewHeaderItem>
+
+        <Border Grid.Row="5" Height="20" Background="Transparent"></Border>
+
+        <ListViewHeaderItem Grid.Row="6" Background="White" Margin="0">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="Auto">
+                    <TextBlock Text="&#xE774;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Global" />
+                </StackPanel>
+            </ContentControl>
+        </ListViewHeaderItem>
+
+        <ListViewHeaderItem Grid.Row="7" Background="White" Margin="0">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="Auto">
+                    <TextBlock Text="&#xE90A;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Comment" />
+                </StackPanel>
+            </ContentControl>
+        </ListViewHeaderItem>
+
+        <ListViewHeaderItem Grid.Row="8" Background="White" Margin="0">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="Auto">
+                    <TextBlock Text="&#xE00B;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Love" />
+                </StackPanel>
+            </ContentControl>
+        </ListViewHeaderItem>
+
+        <ListViewHeaderItem Grid.Row="9" Background="White" Margin="0">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="Auto">
+                    <TextBlock Text="&#xE8EA;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Phone" />
+                </StackPanel>
+            </ContentControl>
+        </ListViewHeaderItem>
+
+        <ListViewHeaderItem Grid.Row="10" Background="White" Margin="0">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal" Height="Auto">
+                    <TextBlock Text="&#xE946;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="About" />
+                </StackPanel>
+            </ContentControl>
+        </ListViewHeaderItem>
+    </Grid>
+</Page>
