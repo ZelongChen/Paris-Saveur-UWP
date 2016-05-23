@@ -236,7 +236,7 @@
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot x:Name="rootPivot" Title="Pivot Title">
+        <Pivot x:Name="MainPagePivot">
             <Pivot.Resources>
                 <Style TargetType="PivotHeaderItem">
                     <Setter Property="FontSize" Value="{ThemeResource PivotHeaderItemFontSize}" />
@@ -254,8 +254,8 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="PivotHeaderItem">
                                 <Grid 
-                        x:Name="Grid"
-                        Background="Transparent">
+                                    x:Name="Grid"
+                                    Background="Transparent">
                                     <Grid.Resources>
                                         <Style x:Key="BaseContentPresenterStyle" TargetType="ContentPresenter">
                                             <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -358,7 +358,7 @@
 
             <PivotItem>
                 <PivotItem.Header>
-                    <local:TabHeader Label="Home" Glyph="&#xE80F;" />
+                    <local:TabHeader x:Uid="MainPage_HomeTab" Label="" Glyph="&#xE80F;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
                 <Grid>
@@ -366,10 +366,10 @@
                     <TextBlock Text="Content of pivot item 1." HorizontalAlignment="Center"/>
                 </Grid>
 
-            </PivotItem>            
+            </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
-                    <local:TabHeader Label="Cuisine" Glyph="&#xE8B7;" />
+                    <local:TabHeader x:Uid="MainPage_RecommandTab" Label="" Glyph="&#xE8B7;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
                 <Grid>
@@ -379,7 +379,7 @@
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
-                    <local:TabHeader Label="Message" Glyph="&#xE8BD;" />
+                    <local:TabHeader x:Uid="MainPage_MessageTab" Label="" Glyph="&#xE8BD;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
                 <Grid>
@@ -390,7 +390,7 @@
 
             <PivotItem>
                 <PivotItem.Header>
-                    <local:TabHeader Label="Me" Glyph="&#xE77B;" />
+                    <local:TabHeader x:Uid="MainPage_AccountTab" Label="" Glyph="&#xE77B;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
                 <Grid>
