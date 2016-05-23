@@ -26,5 +26,35 @@ namespace Paris_Saveur_UWP
         {
             this.InitializeComponent();
         }
+
+        private void RecommendedGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void NearByGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void HotGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void MyFavoritesGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void HotTagGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void MetroGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }

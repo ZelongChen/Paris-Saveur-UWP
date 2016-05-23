@@ -126,6 +126,24 @@
   <data name="MainPage_HomeTab.Label" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="MainPage_Home_Hot.Text" xml:space="preserve">
+    <value>Hot</value>
+  </data>
+  <data name="MainPage_Home_HotTag.Text" xml:space="preserve">
+    <value>Hot Tags</value>
+  </data>
+  <data name="MainPage_Home_Metro.Text" xml:space="preserve">
+    <value>Metro</value>
+  </data>
+  <data name="MainPage_Home_MyFavorites.Text" xml:space="preserve">
+    <value>My Favorites</value>
+  </data>
+  <data name="MainPage_Home_Nearby.Text" xml:space="preserve">
+    <value>Nearby</value>
+  </data>
+  <data name="MainPage_Home_Recommended.Text" xml:space="preserve">
+    <value>Recommanded</value>
+  </data>
   <data name="MainPage_MessageTab.Label" xml:space="preserve">
     <value>Message</value>
   </data>

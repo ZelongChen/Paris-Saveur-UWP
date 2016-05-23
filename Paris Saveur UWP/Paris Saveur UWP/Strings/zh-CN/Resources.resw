@@ -126,6 +126,24 @@
   <data name="MainPage_HomeTab.Label" xml:space="preserve">
     <value>首页</value>
   </data>
+  <data name="MainPage_Home_Hot.Text" xml:space="preserve">
+    <value>热门餐馆</value>
+  </data>
+  <data name="MainPage_Home_HotTag.Text" xml:space="preserve">
+    <value>热门标签</value>
+  </data>
+  <data name="MainPage_Home_Metro.Text" xml:space="preserve">
+    <value>地铁周边</value>
+  </data>
+  <data name="MainPage_Home_MyFavorites.Text" xml:space="preserve">
+    <value>我的收藏</value>
+  </data>
+  <data name="MainPage_Home_Nearby.Text" xml:space="preserve">
+    <value>附近餐馆</value>
+  </data>
+  <data name="MainPage_Home_Recommended.Text" xml:space="preserve">
+    <value>随便看看</value>
+  </data>
   <data name="MainPage_MessageTab.Label" xml:space="preserve">
     <value>消息</value>
   </data>

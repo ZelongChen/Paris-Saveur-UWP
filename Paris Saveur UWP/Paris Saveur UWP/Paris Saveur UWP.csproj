@@ -119,6 +119,12 @@
     <None Include="Paris Saveur UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\mainpage_hot.png" />
+    <Content Include="Assets\Icons\mainpage_location.png" />
+    <Content Include="Assets\Icons\mainpage_metro.png" />
+    <Content Include="Assets\Icons\mainpage_recommend.png" />
+    <Content Include="Assets\Icons\mainpage_style.png" />
+    <Content Include="Assets\Icons\mainpage_tag.png" />
     <Content Include="Assets\Logos\logo_white.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -147,9 +153,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Icons\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
