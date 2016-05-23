@@ -502,7 +502,7 @@
                                 <RowDefinition Height="1.3*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="&#xE052;" 
+                            <TextBlock Text="&#xEB68;" 
                                        Style="{StaticResource MainPageItemsIconsStyle}"
                                        Foreground="{StaticResource AppThemeColor}" 
                                        AutomationProperties.Name="Recommended" />
@@ -594,7 +594,7 @@
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
-                    <local:TabHeader x:Uid="MainPage_RecommandTab" Label="" Glyph="&#xE8B7;" />
+                    <local:TabHeader x:Uid="MainPage_RecommandTab" Label="" Glyph="&#xE728;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
                 <Grid>
