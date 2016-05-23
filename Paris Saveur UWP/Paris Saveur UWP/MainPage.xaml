@@ -249,6 +249,74 @@
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RecommendedGrid.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="RecommendedGrid.(Grid.RowSpan)" Value="2"></Setter>
+                        <Setter Target="RecommendedGrid.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="RecommendedGrid.(Grid.ColumnSpan)" Value="3"></Setter>
+                        <Setter Target="NearByGrid.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="NearByGrid.(Grid.RowSpan)" Value="2"></Setter>
+                        <Setter Target="NearByGrid.(Grid.Column)" Value="3"></Setter>
+                        <Setter Target="NearByGrid.(Grid.ColumnSpan)" Value="3"></Setter>
+                        <Setter Target="HotGrid.(Grid.Row)" Value="2"></Setter>
+                        <Setter Target="HotGrid.(Grid.RowSpan)" Value="2"></Setter>
+                        <Setter Target="HotGrid.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="HotGrid.(Grid.ColumnSpan)" Value="3"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.Row)" Value="2"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.RowSpan)" Value="2"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.Column)" Value="3"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.ColumnSpan)" Value="3"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.Row)" Value="4"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.RowSpan)" Value="2"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.ColumnSpan)" Value="3"></Setter>
+                        <Setter Target="MetroGrid.(Grid.Row)" Value="4"></Setter>
+                        <Setter Target="MetroGrid.(Grid.RowSpan)" Value="2"></Setter>
+                        <Setter Target="MetroGrid.(Grid.Column)" Value="3"></Setter>
+                        <Setter Target="MetroGrid.(Grid.ColumnSpan)" Value="3"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RecommendedGrid.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="RecommendedGrid.(Grid.RowSpan)" Value="3"></Setter>
+                        <Setter Target="RecommendedGrid.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="RecommendedGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="NearByGrid.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="NearByGrid.(Grid.RowSpan)" Value="3"></Setter>
+                        <Setter Target="NearByGrid.(Grid.Column)" Value="2"></Setter>
+                        <Setter Target="NearByGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="HotGrid.(Grid.Row)" Value="0"></Setter>
+                        <Setter Target="HotGrid.(Grid.RowSpan)" Value="3"></Setter>
+                        <Setter Target="HotGrid.(Grid.Column)" Value="4"></Setter>
+                        <Setter Target="HotGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.Row)" Value="3"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.RowSpan)" Value="3"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.Column)" Value="0"></Setter>
+                        <Setter Target="MyFavoritesGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.Row)" Value="3"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.RowSpan)" Value="3"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.Column)" Value="2"></Setter>
+                        <Setter Target="HotTagGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="MetroGrid.(Grid.Row)" Value="3"></Setter>
+                        <Setter Target="MetroGrid.(Grid.RowSpan)" Value="3"></Setter>
+                        <Setter Target="MetroGrid.(Grid.Column)" Value="4"></Setter>
+                        <Setter Target="MetroGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -379,17 +447,22 @@
                     <local:TabHeader x:Uid="MainPage_HomeTab" Label="" Glyph="&#xE80F;" />
                 </PivotItem.Header>
                 <!--Pivot content goes here-->
+
                 <Grid>
                     <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="1.5*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
                     <Border Grid.Row="0" Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="1"></Border>
 
-                    <Image Grid.Row="2" Source="Assets/homepage2.png" Stretch="UniformToFill" Margin="10"/>
+                    <Image Grid.Row="1" Source="Assets/homepage2.png" Stretch="UniformToFill" Margin="10"/>
                     <Grid Grid.Row="2" Margin="0,0,0,0">
+
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
@@ -397,8 +470,12 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid x:Name="RecommendedGrid" Grid.Row="0" Grid.Column="0" Tapped="RecommendedGrid_Tapped">
+                        <Grid x:Name="RecommendedGrid" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="RecommendedGrid_Tapped">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1.3*"/>
                                 <RowDefinition Height="1*"/>
@@ -413,7 +490,7 @@
 								Text="" 
 								Style="{StaticResource MainPageItemsTextStyle}"/>
                         </Grid>
-                        <Grid x:Name="NearByGrid" Grid.Row="0" Grid.Column="1" Tapped="NearByGrid_Tapped">
+                        <Grid x:Name="NearByGrid" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="NearByGrid_Tapped">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1.3*"/>
                                 <RowDefinition Height="1*"/>
@@ -428,7 +505,7 @@
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
                         </Grid>
-                        <Grid x:Name="HotGrid" Grid.Row="1" Grid.Column="0" Tapped="HotGrid_Tapped">
+                        <Grid x:Name="HotGrid" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="HotGrid_Tapped">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1.3*"/>
                                 <RowDefinition Height="1*"/>
@@ -443,7 +520,7 @@
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
                         </Grid>
-                        <Grid x:Name="MyFavoritesGrid" Grid.Row="1" Grid.Column="1" Tapped="MyFavoritesGrid_Tapped">
+                        <Grid x:Name="MyFavoritesGrid" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="MyFavoritesGrid_Tapped">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1.3*"/>
                                 <RowDefinition Height="1*"/>
@@ -458,7 +535,7 @@
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
                         </Grid>
-                        <Grid x:Name="HotTagGrid" Grid.Row="2" Grid.Column="0" Tapped="HotTagGrid_Tapped">
+                        <Grid x:Name="HotTagGrid" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="HotTagGrid_Tapped">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1.3*"/>
                                 <RowDefinition Height="1*"/>
@@ -473,7 +550,7 @@
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
                         </Grid>
-                        <Grid x:Name="MetroGrid" Grid.Row="2" Grid.Column="2" Tapped="MetroGrid_Tapped">
+                        <Grid x:Name="MetroGrid" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="MetroGrid_Tapped">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1.3*"/>
                                 <RowDefinition Height="1*"/>
