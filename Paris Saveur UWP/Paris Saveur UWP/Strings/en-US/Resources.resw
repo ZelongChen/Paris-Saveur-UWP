@@ -150,4 +150,7 @@
   <data name="MainPage_RecommandTab.Label" xml:space="preserve">
     <value>Recommand</value>
   </data>
+  <data name="MainPage_SearchButton.Label" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>

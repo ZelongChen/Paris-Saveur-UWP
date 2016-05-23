@@ -7,6 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <CommandBar x:Name="BottomAppBar">
+            <AppBarButton x:Uid="MainPage_SearchButton" Icon="Find" Label="" Click="SearchButton_Click"></AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Page.TopAppBar>
+        <CommandBar VerticalAlignment="Stretch" Background="{StaticResource AppThemeColor}" ClosedDisplayMode="Hidden">
+            <AppBarButton x:Name="TopAppBar" x:Uid="MainPage_SearchButton" Icon="Find" Label="" Click="SearchButton_Click"></AppBarButton>
+            <CommandBar.Content>
+                <local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
     <Page.Resources>
 
         <Style x:Key="MainPageItemsTextStyle" TargetType="TextBlock">
@@ -247,6 +261,29 @@
         </Style>
     </Page.Resources>
 
+    <!--<VisualStateManager.VisualStateGroups>
+        <VisualStateGroup>
+            <VisualState x:Name="NarrowState">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="BottomAppBar.Visibility" Value="Visible"></Setter>
+                    <Setter Target="TopAppBar.Visibility" Value="Collapsed"></Setter>
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="WideState">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowHeight="600"></AdaptiveTrigger>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
+                    <Setter Target="TopAppBar.Visibility" Value="Visible"></Setter>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>-->
+
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -281,6 +318,8 @@
                         <Setter Target="MetroGrid.(Grid.RowSpan)" Value="2"></Setter>
                         <Setter Target="MetroGrid.(Grid.Column)" Value="3"></Setter>
                         <Setter Target="MetroGrid.(Grid.ColumnSpan)" Value="3"></Setter>
+                        <Setter Target="BottomAppBar.Visibility" Value="Visible"></Setter>
+                        <Setter Target="TopAppBar.Visibility" Value="Collapsed"></Setter>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
@@ -312,6 +351,8 @@
                         <Setter Target="MetroGrid.(Grid.RowSpan)" Value="3"></Setter>
                         <Setter Target="MetroGrid.(Grid.Column)" Value="4"></Setter>
                         <Setter Target="MetroGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="TopAppBar.Visibility" Value="Visible"></Setter>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -321,7 +362,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />
+        <!--<local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />-->
         <Pivot x:Name="MainPagePivot" Grid.Row="1" >
             <Pivot.Resources>
                 <Style TargetType="PivotHeaderItem">

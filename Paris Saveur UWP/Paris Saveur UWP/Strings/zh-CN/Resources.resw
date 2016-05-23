@@ -150,4 +150,7 @@
   <data name="MainPage_RecommandTab.Label" xml:space="preserve">
     <value>食单</value>
   </data>
+  <data name="MainPage_SearchButton.Label" xml:space="preserve">
+    <value>索搜</value>
+  </data>
 </root>

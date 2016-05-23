@@ -56,5 +56,10 @@ namespace Paris_Saveur_UWP
         {
 
         }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
