@@ -5,4 +5,17 @@
     xmlns:local="using:Paris_Saveur_UWP"
     RequestedTheme="Light">
 
+    <Application.Resources>
+        
+        <SolidColorBrush x:Key="AppThemeColor">#FFE05C52</SolidColorBrush>
+        
+        <Style x:Key="PageHeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="22"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+    
+    </Application.Resources>
+
 </Application>

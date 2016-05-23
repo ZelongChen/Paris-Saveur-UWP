@@ -120,6 +120,9 @@
   <data name="MainPage_AccountTab.Label" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="MainPage_Header.Label" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="MainPage_HomeTab.Label" xml:space="preserve">
     <value>Home</value>
   </data>

@@ -236,7 +236,12 @@
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot x:Name="MainPagePivot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />
+        <Pivot x:Name="MainPagePivot" Grid.Row="1" >
             <Pivot.Resources>
                 <Style TargetType="PivotHeaderItem">
                     <Setter Property="FontSize" Value="{ThemeResource PivotHeaderItemFontSize}" />
