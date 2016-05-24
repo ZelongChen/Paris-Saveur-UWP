@@ -7,6 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.TopAppBar>
+        <CommandBar x:Name="CommandBar" VerticalAlignment="Stretch" Foreground="White" Background="{StaticResource AppThemeColor}" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
+            <AppBarButton x:Uid="RecommendedPage_RefreshButton" Label="" Icon="Refresh"/>
+            <CommandBar.Content>
+                <local:PageHeader x:Uid="MainPage_Header" Label="" />
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
     <Grid Background="#f2f2f2">
 
         <Grid.RowDefinitions>

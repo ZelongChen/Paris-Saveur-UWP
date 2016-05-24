@@ -13,7 +13,7 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Page.TopAppBar>
-        <CommandBar x:Name="CommandBar" VerticalAlignment="Stretch" Foreground="White" Background="{StaticResource AppThemeColor}">
+        <CommandBar x:Name="CommandBar" VerticalAlignment="Stretch" Foreground="White" Background="{StaticResource AppThemeColor}" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
             <AppBarButton x:Name="TopAppBar" x:Uid="MainPage_SearchButton" Icon="Find" Foreground="White" Label="" Click="SearchButton_Click"></AppBarButton>
             <CommandBar.Content>
                 <local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />
