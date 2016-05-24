@@ -15,7 +15,50 @@
             <Setter Property="FontSize" Value="22"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
-    
+
+        <DataTemplate x:Key="RestaurantListViewItemTemplate">
+            <Grid Background="White" Margin="0,5,0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="restaurantThumbnail" Grid.Column="0" Source="{Binding ThumbnailBitmap}" Margin="5,5,15,5"></Image>
+                <StackPanel x:Name="restaurantSimpleInfoStack" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+                    <TextBlock x:Name="restaurantSimpleInfoTitle" FontSize="18" Foreground="Black" Text="{Binding name}" FontWeight="Bold"></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="restaurantSimpleInfoType" Grid.Column="0" FontSize="16" Foreground="Black" Text="{Binding style}" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock x:Name="restaurantSimpleInfoPrice" Grid.Column="1" Foreground="Black" FontSize="16" Text="{Binding consumption_per_capita}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"></TextBlock>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <Image x:Name="Star1" Source="{Binding star1}" />
+                        <Image x:Name="Star2" Source="{Binding star2}" />
+                        <Image x:Name="Star3" Source="{Binding star3}" />
+                        <Image x:Name="Star4" Source="{Binding star4}" />
+                        <Image x:Name="Star5" Source="{Binding star5}" />
+                        <TextBlock x:Name="restaurantSimpleInfoReview" FontSize="16" Foreground="Black" Text="{Binding RatingScoreAndReviewNum}" Margin="10,0,0,0"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="NoConnectionTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Visibility" Value="Visible"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Foreground" Value="Gray"></Setter>
+            <Setter Property="FontSize" Value="22"></Setter>
+        </Style>
+
+        <Style x:Key="ProgressRingStyle" TargetType="ProgressRing">
+            <Setter Property="Visibility" Value="Collapsed"></Setter>
+            <Setter Property="IsActive" Value="True"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="{StaticResource AppThemeColor}"></Setter>
+        </Style>
     </Application.Resources>
 
 </Application>

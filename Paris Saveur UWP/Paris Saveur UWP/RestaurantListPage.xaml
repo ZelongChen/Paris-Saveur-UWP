@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="Paris_Saveur_UWP.RestaurantListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paris_Saveur_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />
+        <ScrollViewer Grid.Row="1" Background="White">
+            <Grid Margin="0,0,0,50">
+                <TextBlock x:Name="NoConnectionText"
+                           x:Uid="NoConnectionText"
+					Text=""
+                    Style="{StaticResource NoConnectionTextBlockStyle}"/>
+                <ListView x:Name="RecommendedRestaurantList" 
+					ItemsSource="{Binding Restaurant_list}"
+					ItemTemplate="{StaticResource RestaurantListViewItemTemplate}"
+					HorizontalContentAlignment="Stretch"
+					SelectionChanged="RecommendedRestaurantList_SelectionChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <ProgressRing x:Name="LoadingRing"
+                              VerticalAlignment="Center"
+                              Style="{StaticResource ProgressRingStyle}"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
