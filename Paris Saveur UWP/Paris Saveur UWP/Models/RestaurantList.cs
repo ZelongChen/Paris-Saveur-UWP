@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 
 namespace Paris_Saveur_UWP.Models
 {
@@ -21,7 +22,12 @@ namespace Paris_Saveur_UWP.Models
 
         public RestaurantList(string jsonString)
         {
-
+            JsonObject json = JsonValue.Parse(jsonString).GetObject();
+            JsonArray array = json.GetNamedArray("restaurant_list");
+            for (int i = 0; i < array.Count; i++)
+            {
+                restaurant_list.Add(new Restaurant(array[i].GetObject()));
+            }
         }
     }
 }

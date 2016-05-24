@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -54,17 +55,12 @@ namespace Paris_Saveur_UWP
         {
             LoadingRing.IsActive = true;
             LoadingRing.Visibility = Visibility.Visible;
-
-
-            var client = new HttpClient();
-            var response = await client.GetAsync(new Uri(ConnectionContext.RecommendedRestaurants_API));
-            var result = await response.Content.ReadAsStringAsync();
-
-            RestaurantList list = Newtonsoft.Json.JsonConvert.DeserializeObject<RestaurantList>(result);
-            foreach (Restaurant restaurant in list.Restaurant_list)
-            {
-                restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
-            }
+            var result = await RestClient.getResponseStringFromUri(ConnectionContext.RecommendedRestaurants_API);
+            RestaurantList list = new RestaurantList(result);
+            //foreach (Restaurant restaurant in list.Restaurant_list)
+            //{
+            //    restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
+            //}
             this.RecommendedRestaurantList.DataContext = list;
 
             LoadingRing.IsActive = false;

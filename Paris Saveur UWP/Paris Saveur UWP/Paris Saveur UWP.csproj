@@ -118,6 +118,7 @@
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\ConnectionContext.cs" />
+    <Compile Include="Tools\RestClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -63,9 +63,9 @@ namespace Paris_Saveur_UWP.Models
             }
         }
 
-        public Restaurant(string jsonString)
+        public Restaurant(JsonObject json)
         {
-            JsonObject json = JsonValue.Parse(jsonString).GetObject();
+
             this.pk = (int)json.GetNamedNumber("pk");
             this.name = json.GetNamedString("name");
             this.description = json.GetNamedString("description");
@@ -89,6 +89,7 @@ namespace Paris_Saveur_UWP.Models
             this.is_ad_ranking = json.GetNamedBoolean("is_ad_ranking");
             
             int size = json.GetNamedArray("tag_list").Count();
+            this.tag_list = new List<string>();
             for (int i = 0; i < size; i++)
             {
                 IJsonValue element = json.GetNamedArray("tag_list")[i];
