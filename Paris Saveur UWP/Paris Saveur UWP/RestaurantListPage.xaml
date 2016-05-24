@@ -7,23 +7,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="RecommendedPage_RefreshButton" Label="" Icon="Refresh" />
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Page.TopAppBar>
+        <CommandBar x:Name="CommandBar" VerticalAlignment="Stretch" Foreground="White" Background="{StaticResource AppThemeColor}">
+            <AppBarButton x:Uid="RecommendedPage_RefreshButton" Label="" Icon="Refresh"/>
+            <CommandBar.Content>
+                <local:PageHeader x:Uid="MainPage_Header" Label="" />
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+    
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />
+        <!--<local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />-->
         <ScrollViewer Grid.Row="1" Background="White">
             <Grid Margin="0,0,0,50">
-                <TextBlock x:Name="NoConnectionText"
-                           x:Uid="NoConnectionText"
+                <TextBlock 
+                    x:Name="NoConnectionText"
+                    x:Uid="NoConnectionText"
 					Text=""
                     Style="{StaticResource NoConnectionTextBlockStyle}"/>
                 <ListView x:Name="RecommendedRestaurantList" 
 					ItemsSource="{Binding Restaurant_list}"
 					ItemTemplate="{StaticResource RestaurantListViewItemTemplate}"
-					HorizontalContentAlignment="Stretch"
-					SelectionChanged="RecommendedRestaurantList_SelectionChanged">
+					HorizontalContentAlignment="Stretch">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

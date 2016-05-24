@@ -29,7 +29,7 @@ namespace Paris_Saveur_UWP
 
         private void RecommendedGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(TestPage));
         }
 
         private void NearByGrid_Tapped(object sender, TappedRoutedEventArgs e)
