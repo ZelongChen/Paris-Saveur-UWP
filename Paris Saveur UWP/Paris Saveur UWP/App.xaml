@@ -34,11 +34,16 @@
                         <TextBlock x:Name="restaurantSimpleInfoPrice" Grid.Column="1" Foreground="Black" FontSize="16" Text="{Binding consumption_per_capita}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"></TextBlock>
                     </Grid>
                     <StackPanel Orientation="Horizontal" Height="20">
-                        <Image x:Name="Star1" Source="{Binding star1}" />
+                        <TextBlock x:Name="Star1" Text="{Binding star1}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="Star2" Text="{Binding star2}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="Star3" Text="{Binding star3}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="Star4" Text="{Binding star4}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="Star5" Text="{Binding star5}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                        <!--<Image x:Name="Star1" Source="{Binding star1}" />
                         <Image x:Name="Star2" Source="{Binding star2}" />
                         <Image x:Name="Star3" Source="{Binding star3}" />
                         <Image x:Name="Star4" Source="{Binding star4}" />
-                        <Image x:Name="Star5" Source="{Binding star5}" />
+                        <Image x:Name="Star5" Source="{Binding star5}" />-->
                         <TextBlock x:Name="restaurantSimpleInfoReview" FontSize="16" Foreground="Black" Text="{Binding RatingScoreAndReviewNum}" Margin="10,0,0,0"></TextBlock>
                     </StackPanel>
                 </StackPanel>

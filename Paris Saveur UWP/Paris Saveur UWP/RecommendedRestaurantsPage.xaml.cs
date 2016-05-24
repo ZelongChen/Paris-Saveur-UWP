@@ -55,12 +55,13 @@ namespace Paris_Saveur_UWP
         {
             LoadingRing.IsActive = true;
             LoadingRing.Visibility = Visibility.Visible;
+
             var result = await RestClient.getResponseStringFromUri(ConnectionContext.RecommendedRestaurants_API);
             RestaurantList list = new RestaurantList(result);
-            //foreach (Restaurant restaurant in list.Restaurant_list)
-            //{
-            //    restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
-            //}
+            foreach (Restaurant restaurant in list.Restaurant_list)
+            {
+                restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
+            }
             this.RecommendedRestaurantList.DataContext = list;
 
             LoadingRing.IsActive = false;

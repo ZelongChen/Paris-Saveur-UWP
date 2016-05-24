@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Paris_Saveur_UWP.Tools;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,16 +36,16 @@ namespace Paris_Saveur_UWP.Models
         public double rating_score { get; set; }
         public string RatingScoreAndReviewNum { get; set; }
         public int consumption_num { get; set; }
-        public double consumption_per_capita { get; set; }
+        public string consumption_per_capita { get; set; }
         public bool is_ad_ranking { get; set; }
         public List<String> tag_list { get; set; }
         //public LatestRating latest_rating { get; set; }
         private BitmapImage thumbnailBitmap;
-        public BitmapImage star1 { get; set; }
-        public BitmapImage star2 { get; set; }
-        public BitmapImage star3 { get; set; }
-        public BitmapImage star4 { get; set; }
-        public BitmapImage star5 { get; set; }
+        public string star1 { get; set; }
+        public string star2 { get; set; }
+        public string star3 { get; set; }
+        public string star4 { get; set; }
+        public string star5 { get; set; }
 
         public BitmapImage ThumbnailBitmap
         {
@@ -85,7 +87,7 @@ namespace Paris_Saveur_UWP.Models
             this.rating_num = (int)json.GetNamedNumber("rating_num");
             this.rating_score = json.GetNamedNumber("rating_score");
             this.consumption_num = (int)json.GetNamedNumber("consumption_num");
-            this.consumption_per_capita = json.GetNamedNumber("consumption_per_capita");
+            this.consumption_per_capita = json.GetNamedNumber("consumption_per_capita").ToString();
             this.is_ad_ranking = json.GetNamedBoolean("is_ad_ranking");
             
             int size = json.GetNamedArray("tag_list").Count();
@@ -96,6 +98,138 @@ namespace Paris_Saveur_UWP.Models
                 this.tag_list.Add(element.GetString());
             }
 
+        }
+
+        public void SetupRestaurantModelToDisplay(Uri baseUri)
+        {
+            this.ShowReviewScoreAndNumber();
+            this.ShowPrice();
+            //this.SetupThumbnail(baseUri);
+            this.SetupStars();
+            if (ConnectionContext.CheckNetworkConnection())
+            {
+                //ImageDownloader.DownloadImageIntoImage(this);
+            }
+        }
+
+        private void ShowReviewScoreAndNumber()
+        {
+            this.RatingScoreAndReviewNum = this.rating_score + " (" + rating_num + " " + LocalizedStrings.Get("RestaurantModel_CommentNumbers") + ")";
+
+        }
+
+        private void ShowPrice()
+        {
+            this.consumption_per_capita = LocalizedStrings.Get("RestaurantModel_Per") + " " + this.consumption_per_capita + "€";
+        }
+
+        private void SetupThumbnail(Uri baseUri)
+        {
+            BitmapImage placeholder = new BitmapImage(new Uri(baseUri, "Assets/restaurant_thumbnail_placeholder.jpg"));
+            this.ThumbnailBitmap = placeholder;
+        }
+
+        private void SetupStars()
+        {
+            //BitmapImage halfStar = new BitmapImage();
+            //halfStar.UriSource = new Uri(baseUri, "Assets/star_half.png");
+            //BitmapImage emptyStar = new BitmapImage();
+            //emptyStar.UriSource = new Uri(baseUri, "Assets/star_empty.png");
+            //BitmapImage star = new BitmapImage();
+            //star.UriSource = new Uri(baseUri, "Assets/star_full.png");
+            //double ratingScore = Double.Parse(this.rating_score, NumberStyles.AllowDecimalPoint);
+            string halfStar = "\uE7C6";
+            string star = "\uE735";
+            string emptyStar = "\uE734";
+            double ratingScore = this.rating_score;
+            if (ratingScore == 0)
+            {
+                this.star1 = emptyStar;
+                this.star2 = emptyStar;
+                this.star3 = emptyStar;
+                this.star4 = emptyStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore > 0 && ratingScore < 1)
+            {
+                this.star1 = halfStar;
+                this.star2 = emptyStar;
+                this.star3 = emptyStar;
+                this.star4 = emptyStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore == 1)
+            {
+                this.star1 = star;
+                this.star2 = emptyStar;
+                this.star3 = emptyStar;
+                this.star4 = emptyStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore > 1 && ratingScore < 2)
+            {
+                this.star1 = star;
+                this.star2 = halfStar;
+                this.star3 = emptyStar;
+                this.star4 = emptyStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore == 2)
+            {
+                this.star1 = star;
+                this.star2 = star;
+                this.star3 = emptyStar;
+                this.star4 = emptyStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore > 2 && ratingScore < 3)
+            {
+                this.star1 = star;
+                this.star2 = star;
+                this.star3 = halfStar;
+                this.star4 = emptyStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore == 3)
+            {
+                this.star1 = star;
+                this.star2 = star;
+                this.star3 = star;
+                this.star4 = emptyStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore > 3 && ratingScore < 4)
+            {
+                this.star1 = star;
+                this.star2 = star;
+                this.star3 = star;
+                this.star4 = halfStar;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore == 4)
+            {
+                this.star1 = star;
+                this.star2 = star;
+                this.star3 = star;
+                this.star4 = star;
+                this.star5 = emptyStar;
+            }
+            if (ratingScore > 4 && ratingScore < 5)
+            {
+                this.star1 = star;
+                this.star2 = star;
+                this.star3 = star;
+                this.star4 = star;
+                this.star5 = halfStar;
+            }
+            if (ratingScore == 5)
+            {
+                this.star1 = star;
+                this.star2 = star;
+                this.star3 = star;
+                this.star4 = star;
+                this.star5 = star;
+            }
         }
     }
 }
