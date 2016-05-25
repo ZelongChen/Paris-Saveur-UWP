@@ -104,7 +104,7 @@ namespace Paris_Saveur_UWP.Models
         {
             this.ShowReviewScoreAndNumber();
             this.ShowPrice();
-            //this.SetupThumbnail(baseUri);
+            this.SetupThumbnail(baseUri);
             this.SetupStars();
             if (ConnectionContext.CheckNetworkConnection())
             {
@@ -125,19 +125,12 @@ namespace Paris_Saveur_UWP.Models
 
         private void SetupThumbnail(Uri baseUri)
         {
-            BitmapImage placeholder = new BitmapImage(new Uri(baseUri, "Assets/restaurant_thumbnail_placeholder.jpg"));
+            BitmapImage placeholder = new BitmapImage(new Uri(baseUri, "Assets/Images/restaurant_thumbnail_placeholder.jpg"));
             this.ThumbnailBitmap = placeholder;
         }
 
         private void SetupStars()
         {
-            //BitmapImage halfStar = new BitmapImage();
-            //halfStar.UriSource = new Uri(baseUri, "Assets/star_half.png");
-            //BitmapImage emptyStar = new BitmapImage();
-            //emptyStar.UriSource = new Uri(baseUri, "Assets/star_empty.png");
-            //BitmapImage star = new BitmapImage();
-            //star.UriSource = new Uri(baseUri, "Assets/star_full.png");
-            //double ratingScore = Double.Parse(this.rating_score, NumberStyles.AllowDecimalPoint);
             string halfStar = "\uE7C6";
             string star = "\uE735";
             string emptyStar = "\uE734";
