@@ -8,13 +8,21 @@
     mc:Ignorable="d">
 
     <Page.BottomAppBar>
-        <CommandBar x:Name="BottomAppBar">
-            <AppBarButton x:Name="BottomAppBar_Refresh" x:Uid="RecommendedRestaurantsPage_RefreshButton" Label="" Icon="Refresh" />
+        <CommandBar x:Name="BottomAppBar" x:DeferLoadStrategy="Lazy">
+            <AppBarButton x:Name="BottomAppBar_Refresh" 
+                          x:Uid="RecommendedRestaurantsPage_RefreshButton" 
+                          Label="" Icon="Refresh" 
+                          Click="BottomAppBar_Refresh_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
     <Page.TopAppBar>
         <CommandBar VerticalAlignment="Stretch" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
-            <AppBarButton x:Name="TopAppBar_Refresh" Foreground="White" x:Uid="RecommendedRestaurantsPage_RefreshButton" Label="" Icon="Refresh"/>
+            <AppBarButton x:Name="TopAppBar_Refresh" x:DeferLoadStrategy="Lazy" 
+                          x:Uid="RecommendedRestaurantsPage_RefreshButton" 
+                          Foreground="White" 
+                          Label="" 
+                          Icon="Refresh" 
+                          Click="BottomAppBar_Refresh_Click"/>
             <CommandBar.Content>
                 <local:PageHeader x:Uid="RecommendedRestaurantsPage_Header" Label="" />
             </CommandBar.Content>
@@ -31,15 +39,30 @@
                     <VisualState.Setters>
                         <Setter Target="TopAppBar_Refresh.Visibility" Value="Collapsed"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Visible"></Setter>
+                        <Setter Target="RecommendedRestaurantList.Visibility" Value="Visible"></Setter>
+                        <Setter Target="RecommendedRestaurantGridView.Visibility" Value="Collapsed"></Setter>
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="Wide">
+                <VisualState x:Name="Mid">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="600"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TopAppBar_Refresh.Visibility" Value="Visible"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="RecommendedRestaurantList.Visibility" Value="Visible"></Setter>
+                        <Setter Target="RecommendedRestaurantGridView.Visibility" Value="Collapsed"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TopAppBar_Refresh.Visibility" Value="Visible"></Setter>
+                        <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="RecommendedRestaurantList.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="RecommendedRestaurantGridView.Visibility" Value="Visible"></Setter>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -48,20 +71,34 @@
             <Grid Margin="0,0,0,50">
                 <TextBlock 
                     x:Name="NoConnectionText"
+                    x:DeferLoadStrategy="Lazy"
                     x:Uid="Global_NoConnectionText"
 					Text=""
                     Style="{StaticResource NoConnectionTextBlockStyle}"/>
                 <ListView x:Name="RecommendedRestaurantList" 
-					ItemsSource="{Binding Restaurant_list}"
-					ItemTemplate="{StaticResource RestaurantListViewItemTemplate}"
-					HorizontalContentAlignment="Stretch">
+                          x:DeferLoadStrategy="Lazy"
+					    ItemsSource="{Binding Restaurant_list}"
+					    ItemTemplate="{StaticResource RestaurantListViewItemTemplate}"
+					    HorizontalContentAlignment="Stretch">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
+                <GridView x:Name="RecommendedRestaurantGridView"
+                          x:DeferLoadStrategy="Lazy"
+                          ItemsSource="{Binding Restaurant_list}"
+                          ItemTemplate="{StaticResource RestaurantListViewItemTemplate}"
+                          HorizontalAlignment="Stretch">
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                </GridView>
                 <ProgressRing x:Name="LoadingRing"
+                              x:DeferLoadStrategy="Lazy"
                               VerticalAlignment="Center"
                               Style="{StaticResource ProgressRingStyle}"/>
             </Grid>

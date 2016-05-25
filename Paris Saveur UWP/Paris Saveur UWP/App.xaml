@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="1.5*"></ColumnDefinition>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="restaurantThumbnail" Grid.Column="0" Source="{Binding ThumbnailBitmap}" Margin="5,5,15,5"></Image>
+                <Image x:Name="restaurantThumbnail" Grid.Column="0" MaxWidth="150" Source="{Binding ThumbnailBitmap}" Margin="5,5,15,5"></Image>
                 <Grid x:Name="restaurantSimpleInfoStack" Grid.Column="1" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -35,7 +35,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="restaurantSimpleInfoType" Grid.Column="0" FontSize="16" Foreground="Black" Text="{Binding tags}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock x:Name="restaurantSimpleInfoType" Grid.Column="0" Foreground="DarkGray" FontSize="16" Text="{Binding tags}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                         <TextBlock x:Name="restaurantSimpleInfoPrice" Grid.Column="1" Foreground="Black" FontSize="16" Text="{Binding consumption_per_capita}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"></TextBlock>
                     </Grid>
                     <StackPanel Orientation="Horizontal" Grid.Row="2">

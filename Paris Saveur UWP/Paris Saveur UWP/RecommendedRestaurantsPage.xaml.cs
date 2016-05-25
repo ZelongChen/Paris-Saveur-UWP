@@ -40,21 +40,21 @@ namespace Paris_Saveur_UWP
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
-                this.NoConnectionText.Visibility = Visibility.Collapsed;
-                this.RecommendedRestaurantList.Visibility = Visibility.Visible;
+                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
+
                 DownloadRecommendedRestaurant();
             }
             else
             {
-                this.NoConnectionText.Visibility = Visibility.Visible;
-                this.RecommendedRestaurantList.Visibility = Visibility.Collapsed;
+                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
             }
         }
 
         private async void DownloadRecommendedRestaurant()
         {
-            LoadingRing.IsActive = true;
-            LoadingRing.Visibility = Visibility.Visible;
+
+            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
+            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
 
             var result = await RestClient.getResponseStringFromUri(ConnectionContext.RecommendedRestaurants_API);
             RestaurantList list = new RestaurantList(result);
@@ -62,10 +62,16 @@ namespace Paris_Saveur_UWP
             {
                 restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
             }
-            this.RecommendedRestaurantList.DataContext = list;
+            ((ListView)(RecommendedRestaurantList ?? FindName("RecommendedRestaurantList"))).DataContext = list;
+            ((GridView)(RecommendedRestaurantGridView ?? FindName("RecommendedRestaurantGridView"))).DataContext = list;
 
-            LoadingRing.IsActive = false;
-            LoadingRing.Visibility = Visibility.Collapsed;
+            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
+            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
+        }
+
+        private void BottomAppBar_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPage();
         }
     }
 }
