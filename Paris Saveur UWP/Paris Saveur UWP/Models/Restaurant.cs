@@ -19,7 +19,7 @@ namespace Paris_Saveur_UWP.Models
         public int pk { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string thumbnail { get; set; }
+        public string thumbnail_url { get; set; }
         public string style { get; set; }
         public string address { get; set; }
         public double geo_lat { get; set; }
@@ -71,7 +71,7 @@ namespace Paris_Saveur_UWP.Models
             this.pk = (int)json.GetNamedNumber("pk");
             this.name = json.GetNamedString("name");
             this.description = json.GetNamedString("description");
-            this.thumbnail = json.GetNamedString("thumbnail");
+            this.thumbnail_url = json.GetNamedString("thumbnail");
             this.style = json.GetNamedString("style");
             this.address = json.GetNamedString("address");
             this.geo_lat = json.GetNamedNumber("geo_lat");
@@ -106,10 +106,7 @@ namespace Paris_Saveur_UWP.Models
             this.ShowPrice();
             this.SetupThumbnail(baseUri);
             this.SetupStars();
-            if (ConnectionContext.CheckNetworkConnection())
-            {
-                //ImageDownloader.DownloadImageIntoImage(this);
-            }
+            ImageDownloader.DownloadImageIntoImage(this);
         }
 
         private void ShowReviewScoreAndNumber()
