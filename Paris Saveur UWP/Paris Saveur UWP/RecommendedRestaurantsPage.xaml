@@ -56,7 +56,7 @@
                 </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="800"></AdaptiveTrigger>
+                        <AdaptiveTrigger MinWindowWidth="900"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TopAppBar_Refresh.Visibility" Value="Visible"></Setter>
@@ -78,7 +78,7 @@
                 <ListView x:Name="RecommendedRestaurantList" 
                           x:DeferLoadStrategy="Lazy"
 					    ItemsSource="{Binding Restaurant_list}"
-					    ItemTemplate="{StaticResource RestaurantListViewItemTemplate}"
+					    ItemTemplate="{StaticResource RestaurantItemTemplate}"
 					    HorizontalContentAlignment="Stretch">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -89,7 +89,7 @@
                 <GridView x:Name="RecommendedRestaurantGridView"
                           x:DeferLoadStrategy="Lazy"
                           ItemsSource="{Binding Restaurant_list}"
-                          ItemTemplate="{StaticResource RestaurantListViewItemTemplate}"
+                          ItemTemplate="{StaticResource RestaurantItemTemplate}"
                           HorizontalAlignment="Stretch">
                     <GridView.ItemContainerStyle>
                         <Style TargetType="GridViewItem">
