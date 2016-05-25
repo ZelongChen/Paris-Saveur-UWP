@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Global_NoConnectionText.Text" xml:space="preserve">
+    <value>Please check your Internet connection</value>
+  </data>
   <data name="MainPage_AccountTab.Label" xml:space="preserve">
     <value>Account</value>
   </data>
@@ -176,5 +179,14 @@
   </data>
   <data name="MainPage_SearchButton.Label" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="RecommendedRestaurantsPage_Header.Label" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="RecommendedRestaurantsPage_RefreshButton.Label" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="RestaurantModel_CommentNumbers" xml:space="preserve">
+    <value>comments</value>
   </data>
 </root>

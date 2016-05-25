@@ -13,6 +13,8 @@ namespace Paris_Saveur_UWP.Models
 {
     class Restaurant : INotifyPropertyChanged
     {
+        public static BitmapImage thumbnail_placeholder;
+        public static string RestaurantModel_CommentNumbers_Globalization = LocalizedStrings.Get("RestaurantModel_CommentNumbers") + ")";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -87,7 +89,7 @@ namespace Paris_Saveur_UWP.Models
             this.rating_num = (int)json.GetNamedNumber("rating_num");
             this.rating_score = json.GetNamedNumber("rating_score");
             this.consumption_num = (int)json.GetNamedNumber("consumption_num");
-            this.consumption_per_capita = json.GetNamedNumber("consumption_per_capita").ToString();
+            this.consumption_per_capita = json.GetNamedNumber("consumption_per_capita").ToString() + "€";
             this.is_ad_ranking = json.GetNamedBoolean("is_ad_ranking");
             
             int size = json.GetNamedArray("tag_list").Count();
@@ -103,7 +105,6 @@ namespace Paris_Saveur_UWP.Models
         public void SetupRestaurantModelToDisplay(Uri baseUri)
         {
             this.ShowReviewScoreAndNumber();
-            this.ShowPrice();
             this.SetupThumbnail(baseUri);
             this.SetupStars();
             ImageDownloader.DownloadImageIntoImage(this);
@@ -111,19 +112,17 @@ namespace Paris_Saveur_UWP.Models
 
         private void ShowReviewScoreAndNumber()
         {
-            this.RatingScoreAndReviewNum = this.rating_score + " (" + rating_num + " " + LocalizedStrings.Get("RestaurantModel_CommentNumbers") + ")";
+            this.RatingScoreAndReviewNum = this.rating_score + " (" + rating_num + " " + RestaurantModel_CommentNumbers_Globalization;
 
-        }
-
-        private void ShowPrice()
-        {
-            this.consumption_per_capita = LocalizedStrings.Get("RestaurantModel_Per") + " " + this.consumption_per_capita + "€";
         }
 
         private void SetupThumbnail(Uri baseUri)
         {
-            BitmapImage placeholder = new BitmapImage(new Uri(baseUri, "Assets/Images/restaurant_thumbnail_placeholder.jpg"));
-            this.ThumbnailBitmap = placeholder;
+            if (thumbnail_placeholder == null)
+            {
+                thumbnail_placeholder = new BitmapImage(new Uri(baseUri, "Assets/Images/restaurant_thumbnail_placeholder.jpg"));
+            }
+            this.ThumbnailBitmap = thumbnail_placeholder;
         }
 
         private void SetupStars()

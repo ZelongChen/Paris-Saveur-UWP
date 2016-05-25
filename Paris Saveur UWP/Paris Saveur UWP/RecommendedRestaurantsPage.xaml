@@ -9,14 +9,14 @@
 
     <Page.BottomAppBar>
         <CommandBar x:Name="BottomAppBar">
-            <AppBarButton x:Name="BottomAppBar_Refresh" x:Uid="RecommendedPage_RefreshButton" Label="" Icon="Refresh" />
+            <AppBarButton x:Name="BottomAppBar_Refresh" x:Uid="RecommendedRestaurantsPage_RefreshButton" Label="" Icon="Refresh" />
         </CommandBar>
     </Page.BottomAppBar>
     <Page.TopAppBar>
         <CommandBar VerticalAlignment="Stretch" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
-            <AppBarButton x:Name="TopAppBar_Refresh" Foreground="White" x:Uid="RecommendedPage_RefreshButton" Label="" Icon="Refresh"/>
+            <AppBarButton x:Name="TopAppBar_Refresh" Foreground="White" x:Uid="RecommendedRestaurantsPage_RefreshButton" Label="" Icon="Refresh"/>
             <CommandBar.Content>
-                <local:PageHeader x:Uid="RestaurantListPage_Header" Label="" />
+                <local:PageHeader x:Uid="RecommendedRestaurantsPage_Header" Label="" />
             </CommandBar.Content>
         </CommandBar>
     </Page.TopAppBar>
@@ -48,7 +48,7 @@
             <Grid Margin="0,0,0,50">
                 <TextBlock 
                     x:Name="NoConnectionText"
-                    x:Uid="NoConnectionText"
+                    x:Uid="Global_NoConnectionText"
 					Text=""
                     Style="{StaticResource NoConnectionTextBlockStyle}"/>
                 <ListView x:Name="RecommendedRestaurantList" 
