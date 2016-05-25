@@ -39,7 +39,7 @@ namespace Paris_Saveur_UWP
 
         private void HotGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(RestaurantListPage));
         }
 
         private void MyFavoritesGrid_Tapped(object sender, TappedRoutedEventArgs e)

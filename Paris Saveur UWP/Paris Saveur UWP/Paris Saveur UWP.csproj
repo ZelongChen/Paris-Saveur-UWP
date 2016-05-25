@@ -114,6 +114,9 @@
     <Compile Include="RecommendedRestaurantsPage.xaml.cs">
       <DependentUpon>RecommendedRestaurantsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RestaurantListPage.xaml.cs">
+      <DependentUpon>RestaurantListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RecommendedRestaurantsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RestaurantListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
