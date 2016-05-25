@@ -23,25 +23,30 @@
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="restaurantThumbnail" Grid.Column="0" Source="{Binding ThumbnailBitmap}" Margin="5,5,15,5"></Image>
-                <StackPanel x:Name="restaurantSimpleInfoStack" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
-                    <TextBlock x:Name="restaurantSimpleInfoTitle" FontSize="18" Foreground="Black" Text="{Binding name}" FontWeight="Bold"></TextBlock>
-                    <Grid>
+                <Grid x:Name="restaurantSimpleInfoStack" Grid.Column="1" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="restaurantSimpleInfoTitle" Grid.Row="0" FontSize="18" Foreground="Black" Text="{Binding name}" FontWeight="Bold"></TextBlock>
+                    <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="restaurantSimpleInfoType" Grid.Column="0" FontSize="16" Foreground="Black" Text="{Binding style}" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock x:Name="restaurantSimpleInfoType" Grid.Column="0" FontSize="16" Foreground="Black" Text="{Binding tags}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                         <TextBlock x:Name="restaurantSimpleInfoPrice" Grid.Column="1" Foreground="Black" FontSize="16" Text="{Binding consumption_per_capita}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0"></TextBlock>
                     </Grid>
-                    <StackPanel Orientation="Horizontal" Height="20">
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
                         <TextBlock x:Name="Star1" Text="{Binding star1}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
                         <TextBlock x:Name="Star2" Text="{Binding star2}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
                         <TextBlock x:Name="Star3" Text="{Binding star3}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
                         <TextBlock x:Name="Star4" Text="{Binding star4}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
                         <TextBlock x:Name="Star5" Text="{Binding star5}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="restaurantSimpleInfoReview" FontSize="16" Foreground="Black" Text="{Binding RatingScoreAndReviewNum}" Margin="10,0,0,0"></TextBlock>
+                        <TextBlock x:Name="restaurantSimpleInfoReview" FontSize="16" Foreground="Black" Text="{Binding RatingScoreAndReviewNum}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
             </Grid>
         </DataTemplate>
 

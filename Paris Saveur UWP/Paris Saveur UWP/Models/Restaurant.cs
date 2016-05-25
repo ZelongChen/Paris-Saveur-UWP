@@ -40,7 +40,7 @@ namespace Paris_Saveur_UWP.Models
         public int consumption_num { get; set; }
         public string consumption_per_capita { get; set; }
         public bool is_ad_ranking { get; set; }
-        public List<String> tag_list { get; set; }
+        public string tags { get; set; }
         //public LatestRating latest_rating { get; set; }
         private BitmapImage thumbnailBitmap;
         public string star1 { get; set; }
@@ -93,11 +93,10 @@ namespace Paris_Saveur_UWP.Models
             this.is_ad_ranking = json.GetNamedBoolean("is_ad_ranking");
             
             int size = json.GetNamedArray("tag_list").Count();
-            this.tag_list = new List<string>();
             for (int i = 0; i < size; i++)
             {
                 IJsonValue element = json.GetNamedArray("tag_list")[i];
-                this.tag_list.Add(element.GetString());
+                this.tags += " " + element.GetString();
             }
 
         }
