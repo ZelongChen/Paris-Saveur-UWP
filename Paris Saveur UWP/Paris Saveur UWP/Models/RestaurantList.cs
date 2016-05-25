@@ -22,6 +22,12 @@ namespace Paris_Saveur_UWP.Models
 
         public RestaurantList(string jsonString)
         {
+            loadMoreRestaurants(jsonString);
+        }
+        public RestaurantList() { }
+
+        public void loadMoreRestaurants(string jsonString)
+        {
             JsonObject json = JsonValue.Parse(jsonString).GetObject();
             JsonArray array = json.GetNamedArray("restaurant_list");
             for (int i = 0; i < array.Count; i++)

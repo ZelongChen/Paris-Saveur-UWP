@@ -67,7 +67,9 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <ScrollViewer Background="White">
+        <ScrollViewer x:Name="scrollViewer"
+                      Background="White"
+                      ViewChanged="ScrollViewer_ViewChanged">
             <Grid Margin="0,0,0,50">
                 <TextBlock 
                     x:Name="NoConnectionText"
@@ -101,6 +103,14 @@
                               x:DeferLoadStrategy="Lazy"
                               VerticalAlignment="Center"
                               Style="{StaticResource ProgressRingStyle}"/>
+                <Button x:Name="LoadMoreButoon"
+                        x:Uid="LoadMoreButoon"
+				        Background="White"
+				        HorizontalContentAlignment="Stretch"
+				        Content="Load more"
+				        Foreground="Black"
+				        HorizontalAlignment="Center"
+				        VerticalAlignment="Bottom"/>
             </Grid>
         </ScrollViewer>
     </Grid>

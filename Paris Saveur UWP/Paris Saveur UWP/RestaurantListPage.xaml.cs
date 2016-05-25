@@ -27,6 +27,7 @@ namespace Paris_Saveur_UWP
         private int _currentPage;
         private string _sortBy;
         private string _restaurantStyle;
+        private RestaurantList list = new RestaurantList();
         private enum LISTTYPE
         {
             Recommended,
@@ -80,12 +81,11 @@ namespace Paris_Saveur_UWP
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
 
-            RestaurantList list;
             switch (type)
             {
                 case (int)LISTTYPE.Recommended:
                     var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
-                    list = new RestaurantList(resultRecommended);
+                    list.loadMoreRestaurants(resultRecommended);
                     break;
                 case (int)LISTTYPE.Style:
                     var resultStyle = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
@@ -114,6 +114,54 @@ namespace Paris_Saveur_UWP
 
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            var verticalOffset = scrollViewer.VerticalOffset;
+            var maxVerticalOffset = scrollViewer.ScrollableHeight; //sv.ExtentHeight - sv.ViewportHeight;
+
+            if (maxVerticalOffset < 0 ||
+                verticalOffset == maxVerticalOffset)
+            {
+                // Scrolled to bottom
+                loadMoreRestaurants();
+            }
+
+
+        }
+
+        private void loadMoreRestaurants()
+        {
+            RefreshPage(_sortBy, _currentPage++);
+        }
+
+        private void RefreshPage(string _sortBy, int page)
+        {
+            if (ConnectionContext.CheckNetworkConnection())
+            {
+                this.RestaurantList.Visibility = Visibility.Visible;
+                this.NoConnectionText.Visibility = Visibility.Collapsed;
+
+                //if (_restaurantStyle == null && _restaurantTag == null)
+                //{
+                    DownloadRestaurants((int)LISTTYPE.Recommended, "", _sortBy, page);
+                //}
+                //else if (_restaurantStyle == null && _restaurantTag != null)
+                //{
+                //    DownloadRestaurants((int)LISTTYPE.Recommended, _restaurantTag.name, _sortBy, page);
+                //}
+                //else
+                //{
+                //    DownloadRestaurants((int)LISTTYPE.Recommended, _restaurantStyle, _sortBy, page);
+                //}
+            }
+            else
+            {
+                _currentPage--;
+                this.RestaurantList.Visibility = Visibility.Collapsed;
+                this.NoConnectionText.Visibility = Visibility.Visible;
+            }
         }
     }
 }
