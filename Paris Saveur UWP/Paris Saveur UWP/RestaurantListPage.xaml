@@ -39,7 +39,7 @@
                     <VisualState.Setters>
                         <Setter Target="TopAppBar.Style" Value="{StaticResource CommandBarStyleWithoutEllipsis}"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Visible"></Setter>
-                        <Setter Target="RestaurantList.Visibility" Value="Visible"></Setter>
+                        <Setter Target="RestaurantListView.Visibility" Value="Visible"></Setter>
                         <Setter Target="RestaurantGridView.Visibility" Value="Collapsed"></Setter>
                     </VisualState.Setters>
                 </VisualState>
@@ -50,7 +50,7 @@
                     <VisualState.Setters>
                         <Setter Target="TopAppBar.Style" Value="{StaticResource CommandBarStyleWithEllipsis}"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
-                        <Setter Target="RestaurantList.Visibility" Value="Visible"></Setter>
+                        <Setter Target="RestaurantListView.Visibility" Value="Visible"></Setter>
                         <Setter Target="RestaurantGridView.Visibility" Value="Collapsed"></Setter>
                     </VisualState.Setters>
                 </VisualState>
@@ -61,7 +61,7 @@
                     <VisualState.Setters>
                         <Setter Target="TopAppBar.Style" Value="{StaticResource CommandBarStyleWithEllipsis}"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
-                        <Setter Target="RestaurantList.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="RestaurantListView.Visibility" Value="Collapsed"></Setter>
                         <Setter Target="RestaurantGridView.Visibility" Value="Visible"></Setter>
                     </VisualState.Setters>
                 </VisualState>
@@ -77,11 +77,12 @@
                     x:Uid="Global_NoConnectionText"
 					Text=""
                     Style="{StaticResource NoConnectionTextBlockStyle}"/>
-                <ListView x:Name="RestaurantList" 
+                <ListView x:Name="RestaurantListView" 
                           x:DeferLoadStrategy="Lazy"
 					    ItemsSource="{Binding Restaurant_list}"
 					    ItemTemplate="{StaticResource RestaurantItemTemplate}"
-					    HorizontalContentAlignment="Stretch">
+					    HorizontalContentAlignment="Stretch"
+                          ShowsScrollingPlaceholders="True">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -92,7 +93,8 @@
                           x:DeferLoadStrategy="Lazy"
                           ItemsSource="{Binding Restaurant_list}"
                           ItemTemplate="{StaticResource RestaurantItemTemplate}"
-                          HorizontalAlignment="Stretch">
+                          HorizontalAlignment="Stretch"
+                          ShowsScrollingPlaceholders="True">
                     <GridView.ItemContainerStyle>
                         <Style TargetType="GridViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -103,14 +105,6 @@
                               x:DeferLoadStrategy="Lazy"
                               VerticalAlignment="Center"
                               Style="{StaticResource ProgressRingStyle}"/>
-                <Button x:Name="LoadMoreButoon"
-                        x:Uid="LoadMoreButoon"
-				        Background="White"
-				        HorizontalContentAlignment="Stretch"
-				        Content="Load more"
-				        Foreground="Black"
-				        HorizontalAlignment="Center"
-				        VerticalAlignment="Bottom"/>
             </Grid>
         </ScrollViewer>
     </Grid>

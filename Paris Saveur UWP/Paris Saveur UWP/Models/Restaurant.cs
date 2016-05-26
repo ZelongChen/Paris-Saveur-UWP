@@ -106,7 +106,7 @@ namespace Paris_Saveur_UWP.Models
             this.ShowReviewScoreAndNumber();
             this.SetupThumbnail(baseUri);
             this.SetupStars();
-            ImageDownloader.DownloadImageIntoImage(this);
+            //ImageDownloader.DownloadImageIntoImage(this);
         }
 
         private void ShowReviewScoreAndNumber()

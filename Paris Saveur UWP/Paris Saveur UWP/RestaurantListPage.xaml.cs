@@ -68,11 +68,11 @@ namespace Paris_Saveur_UWP
                     //DownloadRestaurants((int)LISTTYPE.Tag, _restaurantTag.name, _sortBy, _currentPage++);
                 }
             }
-            else
-            {
-                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
-                //this.LoadMoreButoon.Visibility = Visibility.Collapsed;
-            }
+            //else
+            //{
+            //    ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
+            //    //this.LoadMoreButoon.Visibility = Visibility.Collapsed;
+            //}
         }
 
         private async void DownloadRestaurants(int type, string keyword, string sortby, int page)
@@ -97,21 +97,14 @@ namespace Paris_Saveur_UWP
                     break;
             }
 
-            //if (list.Restaurant_list.Count < 12)
-            //{
-            //    LoadMoreButoon.Visibility = Visibility.Collapsed;
-            //}
-            //else
-            //{
-            //    LoadMoreButoon.Visibility = Visibility.Visible;
-            //}
             foreach (Restaurant restaurant in list.Restaurant_list)
             {
                 restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
             }
-            ((ListView)(RestaurantList ?? FindName("RestaurantList"))).DataContext = list;
-            ((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext = list;
-
+            if (((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext == null)
+                ((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext = list;
+            if (((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext == null)
+                ((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext = list;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
         }
@@ -140,12 +133,11 @@ namespace Paris_Saveur_UWP
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
-                this.RestaurantList.Visibility = Visibility.Visible;
                 this.NoConnectionText.Visibility = Visibility.Collapsed;
 
                 //if (_restaurantStyle == null && _restaurantTag == null)
                 //{
-                    DownloadRestaurants((int)LISTTYPE.Recommended, "", _sortBy, page);
+                DownloadRestaurants((int)LISTTYPE.Recommended, "", _sortBy, page);
                 //}
                 //else if (_restaurantStyle == null && _restaurantTag != null)
                 //{
@@ -159,7 +151,6 @@ namespace Paris_Saveur_UWP
             else
             {
                 _currentPage--;
-                this.RestaurantList.Visibility = Visibility.Collapsed;
                 this.NoConnectionText.Visibility = Visibility.Visible;
             }
         }
