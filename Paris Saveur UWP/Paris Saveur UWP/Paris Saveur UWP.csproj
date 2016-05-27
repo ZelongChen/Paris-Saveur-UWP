@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -91,6 +91,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="project.json" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
@@ -104,13 +105,25 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\RestaurantList.cs" />
     <Compile Include="PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecommendedRestaurantsPage.xaml.cs">
+      <DependentUpon>RecommendedRestaurantsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RestaurantListPage.xaml.cs">
+      <DependentUpon>RestaurantListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\ConnectionContext.cs" />
+    <Compile Include="Tools\ImageDownloader.cs" />
+    <Compile Include="Tools\LocalizedStrings.cs" />
+    <Compile Include="Tools\RestClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -127,6 +140,7 @@
     <Content Include="Assets\Icons\mainpage_style.png" />
     <Content Include="Assets\Icons\mainpage_tag.png" />
     <Content Include="Assets\Images\homepage.png" />
+    <Content Include="Assets\Images\restaurant_thumbnail_placeholder.jpg" />
     <Content Include="Assets\Logos\logo_white.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -147,6 +161,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PageHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecommendedRestaurantsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RestaurantListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

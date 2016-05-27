@@ -13,8 +13,8 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Page.TopAppBar>
-        <CommandBar x:Name="CommandBar" VerticalAlignment="Stretch" Foreground="White" Background="{StaticResource AppThemeColor}">
-            <AppBarButton x:Name="TopAppBar" x:Uid="MainPage_SearchButton" Icon="Find" Foreground="White" Label="" Click="SearchButton_Click"></AppBarButton>
+        <CommandBar x:Name="CommandBar" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
+            <AppBarButton x:Name="TopAppBar" Foreground="White" x:Uid="MainPage_SearchButton" Icon="Find" Label="" Click="SearchButton_Click"></AppBarButton>
             <CommandBar.Content>
                 <local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />
             </CommandBar.Content>
@@ -338,12 +338,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <!--<local:PageHeader Grid.Row="0" x:Uid="MainPage_Header" Label="" />-->
-        <Pivot x:Name="MainPagePivot" Grid.Row="1" >
+        <Pivot x:Name="MainPagePivot">
             <Pivot.Resources>
                 <Style TargetType="PivotHeaderItem">
                     <Setter Property="FontSize" Value="{ThemeResource PivotHeaderItemFontSize}" />
