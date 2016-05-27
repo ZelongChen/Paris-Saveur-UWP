@@ -10,18 +10,18 @@
     <Page.BottomAppBar>
         <CommandBar x:Name="BottomAppBar">
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByPopularity" Label=""/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingScore" Label=""/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingNum" Label=""/>
+                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByPopularity" Label="" Click="SortByPopularity_Click"/>
+                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingScore" Label="" Click="SortByRatingScore_Click"/>
+                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingNum" Label="" Click="SortByRatingNum_Click"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Page.TopAppBar>
         <CommandBar x:Name="TopAppBar" VerticalAlignment="Stretch" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByPopularity" Label=""/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingScore" Label=""/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingNum" Label=""/>
+                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByPopularity" Label="" Click="SortByPopularity_Click"/>
+                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingScore" Label="" Click="SortByRatingScore_Click"/>
+                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingNum" Label="" Click="SortByRatingNum_Click"/>
             </CommandBar.SecondaryCommands>
             <CommandBar.Content>
                 <local:PageHeader x:Name="Title" x:Uid="RestaurantListPage_Header" Label="" />

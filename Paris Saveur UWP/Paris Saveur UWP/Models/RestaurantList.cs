@@ -35,5 +35,10 @@ namespace Paris_Saveur_UWP.Models
                 restaurant_list.Add(new Restaurant(array[i].GetObject()));
             }
         }
+
+        public void clearRestaurantList()
+        {
+            this.restaurant_list.Clear();
+        }
     }
 }

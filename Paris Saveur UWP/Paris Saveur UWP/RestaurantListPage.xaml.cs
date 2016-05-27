@@ -27,19 +27,25 @@ namespace Paris_Saveur_UWP
         private int _currentPage;
         private string _sortBy;
         private string _restaurantStyle;
-        private RestaurantList list = new RestaurantList();
+        private RestaurantList _list = new RestaurantList();
+
+        private string SORTBY_POPULARITY = "popularity";
+        private string SORTBY_RATINGNUM = "rating_num";
+        private string SORTBY_RATINGSCORE = "rating_score";
+
         private enum LISTTYPE
         {
             Recommended,
             Tag,
             Style
         }
+        
 
         public RestaurantListPage()
         {
             this.InitializeComponent();
             _currentPage = 1;
-            _sortBy = "popularity";
+            _sortBy = SORTBY_POPULARITY;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -83,26 +89,26 @@ namespace Paris_Saveur_UWP
             {
                 case (int)LISTTYPE.Recommended:
                     var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
-                    list.loadMoreRestaurants(resultRecommended);
+                    _list.loadMoreRestaurants(resultRecommended);
                     break;
                 case (int)LISTTYPE.Style:
                     var resultStyle = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
-                    list = new RestaurantList(resultStyle);
+                    _list = new RestaurantList(resultStyle);
                     break;
                 default:
                     var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
-                    list = new RestaurantList(resultTag);
+                    _list = new RestaurantList(resultTag);
                     break;
             }
 
-            foreach (Restaurant restaurant in list.Restaurant_list)
+            foreach (Restaurant restaurant in _list.Restaurant_list)
             {
                 restaurant.SetupRestaurantModelToDisplay();
             }
             if (((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext == null)
-                ((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext = list;
+                ((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext = _list;
             if (((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext == null)
-                ((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext = list;
+                ((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext = _list;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
         }
@@ -115,17 +121,12 @@ namespace Paris_Saveur_UWP
             if (maxVerticalOffset < 0 || verticalOffset == maxVerticalOffset)
             {
                 // Scrolled to bottom
-                loadMoreRestaurants();
+                loadPage(_sortBy, _currentPage);
             }
 
         }
 
-        private void loadMoreRestaurants()
-        {
-            RefreshPage(_sortBy, _currentPage++);
-        }
-
-        private void RefreshPage(string _sortBy, int page)
+        private void loadPage(string _sortBy, int page)
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
@@ -149,6 +150,28 @@ namespace Paris_Saveur_UWP
                 _currentPage--;
                 this.NoConnectionText.Visibility = Visibility.Visible;
             }
+        }
+
+        private void SortByPopularity_Click(object sender, RoutedEventArgs e)
+        {
+            refreshPage(SORTBY_POPULARITY);
+        }
+
+        private void SortByRatingScore_Click(object sender, RoutedEventArgs e)
+        {
+            refreshPage(SORTBY_RATINGSCORE);
+        }
+
+        private void SortByRatingNum_Click(object sender, RoutedEventArgs e)
+        {
+            refreshPage(SORTBY_RATINGNUM);
+        }
+
+        private void refreshPage(string sortBy)
+        {
+            _currentPage = 1;
+            _list.clearRestaurantList();
+            loadPage(sortBy, _currentPage++);
         }
     }
 }
