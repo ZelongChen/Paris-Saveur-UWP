@@ -130,7 +130,7 @@ namespace Paris_Saveur_UWP
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
-                this.NoConnectionText.Visibility = Visibility.Collapsed;
+                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
 
                 //if (_restaurantStyle == null && _restaurantTag == null)
                 //{
@@ -148,7 +148,7 @@ namespace Paris_Saveur_UWP
             else
             {
                 _currentPage--;
-                this.NoConnectionText.Visibility = Visibility.Visible;
+                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
             }
         }
 

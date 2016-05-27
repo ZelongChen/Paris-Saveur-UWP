@@ -41,22 +41,11 @@ namespace Paris_Saveur_UWP.Models
         public bool is_ad_ranking { get; set; }
         public string tags { get; set; }
         //public LatestRating latest_rating { get; set; }
-        private BitmapImage thumbnailBitmap;
         public string star1 { get; set; }
         public string star2 { get; set; }
         public string star3 { get; set; }
         public string star4 { get; set; }
         public string star5 { get; set; }
-
-        public BitmapImage ThumbnailBitmap
-        {
-            get { return thumbnailBitmap; }
-            set
-            {
-                thumbnailBitmap = value;
-                NotifyPropertyChanged("ThumbnailBitmap");
-            }
-        }
 
         public void NotifyPropertyChanged(string propertyName)
         {
