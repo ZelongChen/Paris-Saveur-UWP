@@ -60,7 +60,7 @@ namespace Paris_Saveur_UWP
             RestaurantList list = new RestaurantList(result);
             foreach (Restaurant restaurant in list.Restaurant_list)
             {
-                restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
+                restaurant.SetupRestaurantModelToDisplay();
             }
             ((ListView)(RecommendedRestaurantList ?? FindName("RecommendedRestaurantList"))).DataContext = list;
             ((GridView)(RecommendedRestaurantGridView ?? FindName("RecommendedRestaurantGridView"))).DataContext = list;

@@ -68,16 +68,14 @@ namespace Paris_Saveur_UWP
                     //DownloadRestaurants((int)LISTTYPE.Tag, _restaurantTag.name, _sortBy, _currentPage++);
                 }
             }
-            //else
-            //{
-            //    ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
-            //    //this.LoadMoreButoon.Visibility = Visibility.Collapsed;
-            //}
+            else
+            {
+                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
+            }
         }
 
         private async void DownloadRestaurants(int type, string keyword, string sortby, int page)
         {
-            //LoadMoreButoon.Visibility = Visibility.Collapsed;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
 
@@ -99,7 +97,7 @@ namespace Paris_Saveur_UWP
 
             foreach (Restaurant restaurant in list.Restaurant_list)
             {
-                restaurant.SetupRestaurantModelToDisplay(this.BaseUri);
+                restaurant.SetupRestaurantModelToDisplay();
             }
             if (((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext == null)
                 ((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext = list;
@@ -114,13 +112,11 @@ namespace Paris_Saveur_UWP
             var verticalOffset = scrollViewer.VerticalOffset;
             var maxVerticalOffset = scrollViewer.ScrollableHeight; //sv.ExtentHeight - sv.ViewportHeight;
 
-            if (maxVerticalOffset < 0 ||
-                verticalOffset == maxVerticalOffset)
+            if (maxVerticalOffset < 0 || verticalOffset == maxVerticalOffset)
             {
                 // Scrolled to bottom
                 loadMoreRestaurants();
             }
-
 
         }
 

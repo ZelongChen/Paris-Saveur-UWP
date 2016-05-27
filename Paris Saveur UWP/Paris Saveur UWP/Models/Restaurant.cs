@@ -100,10 +100,10 @@ namespace Paris_Saveur_UWP.Models
 
         }
 
-        public void SetupRestaurantModelToDisplay(Uri baseUri)
+        public void SetupRestaurantModelToDisplay()
         {
             this.ShowReviewScoreAndNumber();
-            this.SetupThumbnail(baseUri);
+            this.SetupThumbnail();
             this.SetupStars();
         }
 
@@ -113,7 +113,7 @@ namespace Paris_Saveur_UWP.Models
 
         }
 
-        private void SetupThumbnail(Uri baseUri)
+        private void SetupThumbnail()
         {
             if (this.thumbnail_url == null)
             {
