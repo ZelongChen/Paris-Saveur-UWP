@@ -13,7 +13,6 @@ namespace Paris_Saveur_UWP.Models
 {
     class Restaurant : INotifyPropertyChanged
     {
-        public static BitmapImage thumbnail_placeholder;
         public static string RestaurantModel_CommentNumbers_Globalization = LocalizedStrings.Get("RestaurantModel_CommentNumbers") + ")";
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -106,7 +105,6 @@ namespace Paris_Saveur_UWP.Models
             this.ShowReviewScoreAndNumber();
             this.SetupThumbnail(baseUri);
             this.SetupStars();
-            //ImageDownloader.DownloadImageIntoImage(this);
         }
 
         private void ShowReviewScoreAndNumber()
@@ -117,11 +115,14 @@ namespace Paris_Saveur_UWP.Models
 
         private void SetupThumbnail(Uri baseUri)
         {
-            if (thumbnail_placeholder == null)
+            if (this.thumbnail_url == null)
             {
-                thumbnail_placeholder = new BitmapImage(new Uri(baseUri, "Assets/Images/restaurant_thumbnail_placeholder.jpg"));
+                this.thumbnail_url = "ms-appx:///Assets/Images/restaurant_thumbnail_placeholder.jpg";
+            } else
+            {
+                this.thumbnail_url = ConnectionContext.BASE_URL + this.thumbnail_url;
             }
-            this.ThumbnailBitmap = thumbnail_placeholder;
+
         }
 
         private void SetupStars()
