@@ -72,7 +72,10 @@ namespace Paris_Saveur_UWP.Models
             this.pk = (int)json.GetNamedNumber("pk");
             this.name = json.GetNamedString("name");
             this.description = json.GetNamedString("description");
-            this.thumbnail_url = json.GetNamedString("thumbnail");
+            if (json.ContainsKey("thumbnail"))
+            {
+                this.thumbnail_url = json.GetNamedString("thumbnail");
+            }
             this.style = json.GetNamedString("style");
             this.address = json.GetNamedString("address");
             this.geo_lat = json.GetNamedNumber("geo_lat");
@@ -117,7 +120,7 @@ namespace Paris_Saveur_UWP.Models
         {
             if (this.thumbnail_url == null)
             {
-                this.thumbnail_url = "ms-appx:///Assets/Images/restaurant_thumbnail_placeholder.jpg";
+                this.thumbnail_url = "Assets/Images/restaurant_thumbnail_placeholder.jpg";
             } else
             {
                 this.thumbnail_url = ConnectionContext.BASE_URL + this.thumbnail_url;

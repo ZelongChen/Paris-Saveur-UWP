@@ -121,7 +121,7 @@ namespace Paris_Saveur_UWP
             if (maxVerticalOffset < 0 || verticalOffset == maxVerticalOffset)
             {
                 // Scrolled to bottom
-                loadPage(_sortBy, _currentPage);
+                loadPage(_sortBy, _currentPage++);
             }
 
         }
@@ -154,20 +154,20 @@ namespace Paris_Saveur_UWP
 
         private void SortByPopularity_Click(object sender, RoutedEventArgs e)
         {
-            refreshPage(SORTBY_POPULARITY);
+            refreshPageSortBY(SORTBY_POPULARITY);
         }
 
         private void SortByRatingScore_Click(object sender, RoutedEventArgs e)
         {
-            refreshPage(SORTBY_RATINGSCORE);
+            refreshPageSortBY(SORTBY_RATINGSCORE);
         }
 
         private void SortByRatingNum_Click(object sender, RoutedEventArgs e)
         {
-            refreshPage(SORTBY_RATINGNUM);
+            refreshPageSortBY(SORTBY_RATINGNUM);
         }
 
-        private void refreshPage(string sortBy)
+        private void refreshPageSortBY(string sortBy)
         {
             _currentPage = 1;
             _list.clearRestaurantList();
