@@ -24,7 +24,7 @@
                 <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingNum" Label="" Click="SortByRatingNum_Click"/>
             </CommandBar.SecondaryCommands>
             <CommandBar.Content>
-                <local:PageHeader x:Name="Title" x:Uid="RestaurantListPage_Header" Label="" />
+                <local:PageHeader x:Name="PagerHeader" x:Uid="RestaurantListPage_Header" Label="" />
             </CommandBar.Content>
         </CommandBar>
     </Page.TopAppBar>
@@ -67,7 +67,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <ScrollViewer x:Name="scrollViewer"
+        <ScrollViewer x:Name="RestaurantsScrollViewer"
                       Background="White"
                       ViewChanged="ScrollViewer_ViewChanged">
             <Grid Margin="0,0,0,50">
