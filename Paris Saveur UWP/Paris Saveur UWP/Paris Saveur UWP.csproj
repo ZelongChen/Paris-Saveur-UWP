@@ -121,7 +121,6 @@
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\ConnectionContext.cs" />
-    <Compile Include="Tools\ImageDownloader.cs" />
     <Compile Include="Tools\LocalizedStrings.cs" />
     <Compile Include="Tools\RestClient.cs" />
   </ItemGroup>

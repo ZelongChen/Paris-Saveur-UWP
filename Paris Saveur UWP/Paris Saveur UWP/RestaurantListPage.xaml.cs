@@ -26,18 +26,16 @@ namespace Paris_Saveur_UWP
     {
         private int _currentPage;
         private string _sortBy;
-        private string _restaurantStyle;
         private RestaurantList _list = new RestaurantList();
 
-        private string SORTBY_POPULARITY = "popularity";
-        private string SORTBY_RATINGNUM = "rating_num";
-        private string SORTBY_RATINGSCORE = "rating_score";
+        private readonly string SORTBY_POPULARITY = "popularity";
+        private readonly string SORTBY_RATINGNUM = "rating_num";
+        private readonly string SORTBY_RATINGSCORE = "rating_score";
 
         private enum LISTTYPE
         {
             Recommended,
-            Tag,
-            Style
+            Tag
         }
         
 
@@ -58,13 +56,7 @@ namespace Paris_Saveur_UWP
                 if (parameterReceived == null)
                 {
                     this.Title.Label = LocalizedStrings.Get("HotRestaurantPage_Title");
-                    DownloadRestaurants((int)LISTTYPE.Recommended, "", _sortBy, _currentPage++);
-                }
-                else if (parameterReceived is string)
-                {
-                    //_restaurantStyle = parameterReceived as string;
-                    //this.Title.Label = Restaurant.StyleToProperLanguage(_restaurantStyle);
-                    //DownloadRestaurants((int)LISTTYPE.Style, _restaurantStyle, _sortBy, _currentPage++);
+                    DownloadRestaurants((int)LISTTYPE.Recommended, "", _currentPage++);
                 }
                 else
                 {
@@ -80,7 +72,7 @@ namespace Paris_Saveur_UWP
             }
         }
 
-        private async void DownloadRestaurants(int type, string keyword, string sortby, int page)
+        private async void DownloadRestaurants(int type, string keyword, int page)
         {
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
             ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
@@ -88,16 +80,12 @@ namespace Paris_Saveur_UWP
             switch (type)
             {
                 case (int)LISTTYPE.Recommended:
-                    var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
-                    _list.loadMoreRestaurants(resultRecommended);
-                    break;
-                case (int)LISTTYPE.Style:
-                    var resultStyle = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
-                    _list = new RestaurantList(resultStyle);
+                    var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.HotRestaurants_API + _sortBy + "&page=" + page);
+                    
                     break;
                 default:
-                    var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.RestaurantList_API + "/list/?order=-" + _sortBy + "&page=" + page);
-                    _list = new RestaurantList(resultTag);
+                    var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.TagRestaurants_API + keyword + "&order=-" + _sortBy + "&page=" + page);
+                    _list.loadMoreRestaurants(resultTag);
                     break;
             }
 
@@ -121,20 +109,20 @@ namespace Paris_Saveur_UWP
             if (maxVerticalOffset < 0 || verticalOffset == maxVerticalOffset)
             {
                 // Scrolled to bottom
-                loadPage(_sortBy, _currentPage++);
+                loadPage(_currentPage++);
             }
 
         }
 
-        private void loadPage(string _sortBy, int page)
+        private void loadPage(int page)
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
-                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
+                ((TextBlock)(this.NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
 
                 //if (_restaurantStyle == null && _restaurantTag == null)
                 //{
-                DownloadRestaurants((int)LISTTYPE.Recommended, "", _sortBy, page);
+                DownloadRestaurants((int)LISTTYPE.Recommended, "", page);
                 //}
                 //else if (_restaurantStyle == null && _restaurantTag != null)
                 //{
@@ -154,24 +142,27 @@ namespace Paris_Saveur_UWP
 
         private void SortByPopularity_Click(object sender, RoutedEventArgs e)
         {
-            refreshPageSortBY(SORTBY_POPULARITY);
+            _sortBy = SORTBY_POPULARITY;
+            refreshPageSortBY();
         }
 
         private void SortByRatingScore_Click(object sender, RoutedEventArgs e)
         {
-            refreshPageSortBY(SORTBY_RATINGSCORE);
+            _sortBy = SORTBY_RATINGSCORE;
+            refreshPageSortBY();
         }
 
         private void SortByRatingNum_Click(object sender, RoutedEventArgs e)
         {
-            refreshPageSortBY(SORTBY_RATINGNUM);
+            _sortBy = SORTBY_RATINGNUM;
+            refreshPageSortBY();
         }
 
-        private void refreshPageSortBY(string sortBy)
+        private void refreshPageSortBY()
         {
             _currentPage = 1;
             _list.clearRestaurantList();
-            loadPage(sortBy, _currentPage++);
+            loadPage(_currentPage++);
         }
     }
 }
