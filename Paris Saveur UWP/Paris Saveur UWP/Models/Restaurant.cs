@@ -112,7 +112,7 @@ namespace Paris_Saveur_UWP.Models
                 this.thumbnail_url = "Assets/Images/restaurant_thumbnail_placeholder.jpg";
             } else
             {
-                this.thumbnail_url = ConnectionContext.BASE_URL + this.thumbnail_url;
+                this.thumbnail_url = ConnectionContext.BaseUrl + this.thumbnail_url;
             }
 
         }

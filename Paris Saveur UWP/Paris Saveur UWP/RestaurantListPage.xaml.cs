@@ -65,11 +65,11 @@ namespace Paris_Saveur_UWP
             switch (type)
             {
                 case (int)LISTTYPE.Recommended:
-                    var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.HotRestaurants_API + _sortBy + "&page=" + page);
+                    var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.HotRestaurantsUrl + _sortBy + "&page=" + page);
                     _list.loadMoreRestaurants(resultRecommended);
                     break;
                 default:
-                    var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.TagRestaurants_API + keyword + "&order=-" + _sortBy + "&page=" + page);
+                    var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.TagRestaurantsUrl + keyword + "&order=-" + _sortBy + "&page=" + page);
                     _list.loadMoreRestaurants(resultTag);
                     break;
             }
