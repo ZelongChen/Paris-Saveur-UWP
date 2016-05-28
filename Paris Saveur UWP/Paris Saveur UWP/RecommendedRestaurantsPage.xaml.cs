@@ -23,33 +23,33 @@ namespace Paris_Saveur_UWP
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
-                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
+                ((TextBlock)(this.NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
 
                 DownloadRecommendedRestaurant();
             }
             else
             {
-                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
+                ((TextBlock)(this.NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
             }
         }
 
         private async void DownloadRecommendedRestaurant()
         {
 
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
 
-            var result = await RestClient.getResponseStringFromUri(ConnectionContext.RecommendedRestaurants_API);
+            var result = await RestClient.getResponseStringFromUri(ConnectionContext.RecommendedRestaurantsUrl);
             RestaurantList list = new RestaurantList(result);
-            foreach (Restaurant restaurant in list.Restaurant_list)
+            foreach (Restaurant restaurant in list.RestaurantCollection)
             {
                 restaurant.SetupRestaurantModelToDisplay();
             }
-            ((ListView)(RecommendedRestaurantList ?? FindName("RecommendedRestaurantList"))).DataContext = list;
-            ((GridView)(RecommendedRestaurantGridView ?? FindName("RecommendedRestaurantGridView"))).DataContext = list;
+            ((ListView)(this.RecommendedRestaurantList ?? FindName("RecommendedRestaurantList"))).DataContext = list;
+            ((GridView)(this.RecommendedRestaurantGridView ?? FindName("RecommendedRestaurantGridView"))).DataContext = list;
 
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
         }
 
         private void BottomAppBar_Refresh_Click(object sender, RoutedEventArgs e)

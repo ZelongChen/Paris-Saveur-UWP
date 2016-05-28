@@ -10,15 +10,16 @@ namespace Paris_Saveur_UWP
 
     public sealed partial class RestaurantListPage : Page
     {
+
+        private readonly string SortByPopularity = "popularity";
+        private readonly string SortByRatingNumbers = "rating_num";
+        private readonly string SortByRatingScore = "rating_score";
+
         private int _currentPage;
         private string _sortBy;
         private RestaurantList _list = new RestaurantList();
 
-        private readonly string SORTBY_POPULARITY = "popularity";
-        private readonly string SORTBY_RATINGNUM = "rating_num";
-        private readonly string SORTBY_RATINGSCORE = "rating_score";
-
-        private enum LISTTYPE
+        private enum ListType
         {
             Recommended,
             Tag
@@ -28,7 +29,7 @@ namespace Paris_Saveur_UWP
         {
             this.InitializeComponent();
             _currentPage = 1;
-            _sortBy = SORTBY_POPULARITY;
+            _sortBy = SortByPopularity;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -41,7 +42,7 @@ namespace Paris_Saveur_UWP
                 if (parameterReceived == null)
                 {
                     this.PagerHeader.Label = LocalizedStrings.Get("HotRestaurantPage_Title");
-                    DownloadRestaurants((int)LISTTYPE.Recommended, "", _currentPage++);
+                    DownloadRestaurants((int)ListType.Recommended, "", _currentPage++);
                 }
                 else
                 {
@@ -64,7 +65,7 @@ namespace Paris_Saveur_UWP
 
             switch (type)
             {
-                case (int)LISTTYPE.Recommended:
+                case (int)ListType.Recommended:
                     var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.HotRestaurantsUrl + _sortBy + "&page=" + page);
                     _list.loadMoreRestaurants(resultRecommended);
                     break;
@@ -74,7 +75,7 @@ namespace Paris_Saveur_UWP
                     break;
             }
 
-            foreach (Restaurant restaurant in _list.Restaurant_list)
+            foreach (Restaurant restaurant in _list.RestaurantCollection)
             {
                 restaurant.SetupRestaurantModelToDisplay();
             }
@@ -107,7 +108,7 @@ namespace Paris_Saveur_UWP
 
                 //if (_restaurantStyle == null && _restaurantTag == null)
                 //{
-                DownloadRestaurants((int)LISTTYPE.Recommended, "", page);
+                DownloadRestaurants((int)ListType.Recommended, "", page);
                 //}
                 //else if (_restaurantStyle == null && _restaurantTag != null)
                 //{
@@ -127,19 +128,19 @@ namespace Paris_Saveur_UWP
 
         private void SortByPopularity_Click(object sender, RoutedEventArgs e)
         {
-            _sortBy = SORTBY_POPULARITY;
+            _sortBy = SortByPopularity;
             RefreshPageSortBY();
         }
 
         private void SortByRatingScore_Click(object sender, RoutedEventArgs e)
         {
-            _sortBy = SORTBY_RATINGSCORE;
+            _sortBy = SortByRatingScore;
             RefreshPageSortBY();
         }
 
         private void SortByRatingNum_Click(object sender, RoutedEventArgs e)
         {
-            _sortBy = SORTBY_RATINGNUM;
+            _sortBy = SortByRatingNumbers;
             RefreshPageSortBY();
         }
 

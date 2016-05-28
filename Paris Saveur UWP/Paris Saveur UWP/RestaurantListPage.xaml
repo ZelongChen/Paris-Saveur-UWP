@@ -79,7 +79,7 @@
                     Style="{StaticResource NoConnectionTextBlockStyle}"/>
                 <ListView x:Name="RestaurantListView" 
                           x:DeferLoadStrategy="Lazy"
-					    ItemsSource="{Binding Restaurant_list}"
+					    ItemsSource="{Binding RestaurantCollection}"
 					    ItemTemplate="{StaticResource RestaurantItemTemplate}"
 					    HorizontalContentAlignment="Stretch"
                           ShowsScrollingPlaceholders="True">
@@ -91,7 +91,7 @@
                 </ListView>
                 <GridView x:Name="RestaurantGridView"
                           x:DeferLoadStrategy="Lazy"
-                          ItemsSource="{Binding Restaurant_list}"
+                          ItemsSource="{Binding RestaurantCollection}"
                           ItemTemplate="{StaticResource RestaurantItemTemplate}"
                           HorizontalAlignment="Stretch"
                           ShowsScrollingPlaceholders="True">
