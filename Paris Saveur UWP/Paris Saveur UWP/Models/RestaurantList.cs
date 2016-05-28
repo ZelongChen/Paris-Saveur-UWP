@@ -10,13 +10,13 @@ namespace Paris_Saveur_UWP.Models
 {
     class RestaurantList
     {
-        private ObservableCollection<Restaurant> restaurant_list = new ObservableCollection<Restaurant>();
-        public ObservableCollection<Restaurant> Restaurant_list
+        private ObservableCollection<Restaurant> _restaurantCollection = new ObservableCollection<Restaurant>();
+        public ObservableCollection<Restaurant> RestaurantCollection
         {
-            get { return restaurant_list; }
+            get { return _restaurantCollection; }
             set
             {
-                restaurant_list = value;
+                _restaurantCollection = value;
             }
         }
 
@@ -32,13 +32,13 @@ namespace Paris_Saveur_UWP.Models
             JsonArray array = json.GetNamedArray("restaurant_list");
             for (int i = 0; i < array.Count; i++)
             {
-                restaurant_list.Add(new Restaurant(array[i].GetObject()));
+                _restaurantCollection.Add(new Restaurant(array[i].GetObject()));
             }
         }
 
         public void clearRestaurantList()
         {
-            this.restaurant_list.Clear();
+            this._restaurantCollection.Clear();
         }
     }
 }

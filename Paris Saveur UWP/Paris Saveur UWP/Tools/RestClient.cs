@@ -10,11 +10,11 @@ namespace Paris_Saveur_UWP.Tools
 {
     class RestClient
     {
-        public static HttpClient client = new HttpClient();
+        private static HttpClient _client = new HttpClient();
 
         public static async Task<string> getResponseStringFromUri(string uri)
         {
-            var response = await client.GetAsync(new Uri(uri));
+            var response = await _client.GetAsync(new Uri(uri));
             var buffer = await response.Content.ReadAsBufferAsync();
             var bufferArray = buffer.ToArray();
             var result = Encoding.UTF8.GetString(bufferArray, 0, bufferArray.Length);

@@ -1,62 +1,48 @@
 ﻿using Paris_Saveur_UWP.Models;
 using Paris_Saveur_UWP.Tools;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Paris_Saveur_UWP
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class RestaurantListPage : Page
     {
+
+        private readonly string SortByPopularity = "popularity";
+        private readonly string SortByRatingNumbers = "rating_num";
+        private readonly string SortByRatingScore = "rating_score";
+
         private int _currentPage;
         private string _sortBy;
         private RestaurantList _list = new RestaurantList();
 
-        private readonly string SORTBY_POPULARITY = "popularity";
-        private readonly string SORTBY_RATINGNUM = "rating_num";
-        private readonly string SORTBY_RATINGSCORE = "rating_score";
-
-        private enum LISTTYPE
+        private enum ListType
         {
             Recommended,
             Tag
         }
-        
 
         public RestaurantListPage()
         {
             this.InitializeComponent();
             _currentPage = 1;
-            _sortBy = SORTBY_POPULARITY;
+            _sortBy = SortByPopularity;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
-                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
+                ((TextBlock)(this.NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
 
                 var parameterReceived = e.Parameter;
                 if (parameterReceived == null)
                 {
-                    this.Title.Label = LocalizedStrings.Get("HotRestaurantPage_Title");
-                    DownloadRestaurants((int)LISTTYPE.Recommended, "", _currentPage++);
+                    this.PagerHeader.Label = LocalizedStrings.Get("HotRestaurantPage_Title");
+                    DownloadRestaurants((int)ListType.Recommended, "", _currentPage++);
                 }
                 else
                 {
@@ -68,53 +54,53 @@ namespace Paris_Saveur_UWP
             }
             else
             {
-                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
+                ((TextBlock)(this.NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
             }
         }
 
         private async void DownloadRestaurants(int type, string keyword, int page)
         {
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
 
             switch (type)
             {
-                case (int)LISTTYPE.Recommended:
-                    var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.HotRestaurants_API + _sortBy + "&page=" + page);
-                    
+                case (int)ListType.Recommended:
+                    var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.HotRestaurantsUrl + _sortBy + "&page=" + page);
+                    _list.loadMoreRestaurants(resultRecommended);
                     break;
                 default:
-                    var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.TagRestaurants_API + keyword + "&order=-" + _sortBy + "&page=" + page);
+                    var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.TagRestaurantsUrl + keyword + "&order=-" + _sortBy + "&page=" + page);
                     _list.loadMoreRestaurants(resultTag);
                     break;
             }
 
-            foreach (Restaurant restaurant in _list.Restaurant_list)
+            foreach (Restaurant restaurant in _list.RestaurantCollection)
             {
                 restaurant.SetupRestaurantModelToDisplay();
             }
-            if (((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext == null)
-                ((ListView)(RestaurantListView ?? FindName("RestaurantListView"))).DataContext = _list;
-            if (((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext == null)
-                ((GridView)(RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext = _list;
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
-            ((ProgressRing)(LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
+            if (((ListView)(this.RestaurantListView ?? FindName("RestaurantListView"))).DataContext == null)
+                ((ListView)(this.RestaurantListView ?? FindName("RestaurantListView"))).DataContext = _list;
+            if (((GridView)(this.RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext == null)
+                ((GridView)(this.RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext = _list;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).IsActive = false;
+            ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Collapsed;
         }
 
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
-            var verticalOffset = scrollViewer.VerticalOffset;
-            var maxVerticalOffset = scrollViewer.ScrollableHeight; //sv.ExtentHeight - sv.ViewportHeight;
+            var verticalOffset = this.RestaurantsScrollViewer.VerticalOffset;
+            var maxVerticalOffset = this.RestaurantsScrollViewer.ScrollableHeight; //sv.ExtentHeight - sv.ViewportHeight;
 
             if (maxVerticalOffset < 0 || verticalOffset == maxVerticalOffset)
             {
                 // Scrolled to bottom
-                loadPage(_currentPage++);
+                LoadPage(_currentPage++);
             }
 
         }
 
-        private void loadPage(int page)
+        private void LoadPage(int page)
         {
             if (ConnectionContext.CheckNetworkConnection())
             {
@@ -122,7 +108,7 @@ namespace Paris_Saveur_UWP
 
                 //if (_restaurantStyle == null && _restaurantTag == null)
                 //{
-                DownloadRestaurants((int)LISTTYPE.Recommended, "", page);
+                DownloadRestaurants((int)ListType.Recommended, "", page);
                 //}
                 //else if (_restaurantStyle == null && _restaurantTag != null)
                 //{
@@ -136,33 +122,33 @@ namespace Paris_Saveur_UWP
             else
             {
                 _currentPage--;
-                ((TextBlock)(NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
+                ((TextBlock)(this.NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Visible;
             }
         }
 
         private void SortByPopularity_Click(object sender, RoutedEventArgs e)
         {
-            _sortBy = SORTBY_POPULARITY;
-            refreshPageSortBY();
+            _sortBy = SortByPopularity;
+            RefreshPageSortBY();
         }
 
         private void SortByRatingScore_Click(object sender, RoutedEventArgs e)
         {
-            _sortBy = SORTBY_RATINGSCORE;
-            refreshPageSortBY();
+            _sortBy = SortByRatingScore;
+            RefreshPageSortBY();
         }
 
         private void SortByRatingNum_Click(object sender, RoutedEventArgs e)
         {
-            _sortBy = SORTBY_RATINGNUM;
-            refreshPageSortBY();
+            _sortBy = SortByRatingNumbers;
+            RefreshPageSortBY();
         }
 
-        private void refreshPageSortBY()
+        private void RefreshPageSortBY()
         {
             _currentPage = 1;
             _list.clearRestaurantList();
-            loadPage(_currentPage++);
+            LoadPage(_currentPage++);
         }
     }
 }
