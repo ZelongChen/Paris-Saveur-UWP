@@ -123,6 +123,9 @@
   <data name="HotRestaurantPage_Title" xml:space="preserve">
     <value>Popular restaurants</value>
   </data>
+  <data name="HotTagPage_Header.Label" xml:space="preserve">
+    <value>Hot tags</value>
+  </data>
   <data name="MainPage_AccountTab.Label" xml:space="preserve">
     <value>Account</value>
   </data>
