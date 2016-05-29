@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="Paris_Saveur_UWP.HotTagsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Paris_Saveur_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Name="HotTagListItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="&#xE8EC;" 
+                           FontFamily="Segoe MDL2 Assets"
+                           FontSize="22"
+                           Foreground="Black" 
+                           AutomationProperties.Name="Tags" />
+                <TextBlock x:Name="TagText" 
+        		Text="{Binding TagToString}"
+        		VerticalAlignment="Center"
+        		Padding="10,0,0,0"
+        		FontSize="22"
+        		Foreground="Black"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Page.TopAppBar>
+        <CommandBar x:Name="TopAppBar" VerticalAlignment="Stretch" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
+            <CommandBar.Content>
+                <local:PageHeader x:Name="PagerHeader" x:Uid="HotTagPage_Header" Label="" />
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid Background="White">
+        <ScrollViewer Grid.Row="1" Background="White">
+            <Grid>
+                <TextBlock x:Name="NoConnectionText"
+                           x:Uid="NoConnectionText"
+					        Text=""
+                            Style="{StaticResource NoConnectionTextBlockStyle}"/>
+                <ListView x:Name="TagList"
+					        Grid.Column="0"
+					        ItemsSource="{Binding}"
+					        ItemTemplate="{StaticResource HotTagListItemTemplate}"
+					        SelectionChanged="TagList_SelectionChanged"/>
+                <ProgressRing x:Name="LoadingRing"
+                                Style="{StaticResource ProgressRingStyle}"
+					            Margin="0,250,0,0"
+					            VerticalAlignment="Top"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

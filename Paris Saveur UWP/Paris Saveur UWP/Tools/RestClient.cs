@@ -12,7 +12,7 @@ namespace Paris_Saveur_UWP.Tools
     {
         private static HttpClient _client = new HttpClient();
 
-        public static async Task<string> getResponseStringFromUri(string uri)
+        public static async Task<string> GetResponseStringFromUrl(string uri)
         {
             var response = await _client.GetAsync(new Uri(uri));
             var buffer = await response.Content.ReadAsBufferAsync();

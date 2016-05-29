@@ -35,7 +35,7 @@ namespace Paris_Saveur_UWP
 
         private void HotTagGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(HotTagsPage));
         }
 
         private void MetroGrid_Tapped(object sender, TappedRoutedEventArgs e)

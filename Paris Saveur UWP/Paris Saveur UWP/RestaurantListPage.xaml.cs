@@ -17,6 +17,7 @@ namespace Paris_Saveur_UWP
 
         private int _currentPage;
         private string _sortBy;
+        private string _restaurantTag;
         private RestaurantList _list = new RestaurantList();
 
         private enum ListType
@@ -46,10 +47,9 @@ namespace Paris_Saveur_UWP
                 }
                 else
                 {
-                    //_restaurantTag = new Tag();
-                    //_restaurantTag = parameterReceived as Tag;
-                    //this.Title.Label = _restaurantTag.name;
-                    //DownloadRestaurants((int)LISTTYPE.Tag, _restaurantTag.name, _sortBy, _currentPage++);
+                    _restaurantTag = parameterReceived as string;
+                    this.PagerHeader.Label = _restaurantTag;
+                    DownloadRestaurants((int)ListType.Tag, _restaurantTag, _currentPage++);
                 }
             }
             else
@@ -66,11 +66,11 @@ namespace Paris_Saveur_UWP
             switch (type)
             {
                 case (int)ListType.Recommended:
-                    var resultRecommended = await RestClient.getResponseStringFromUri(ConnectionContext.HotRestaurantsUrl + _sortBy + "&page=" + page);
+                    var resultRecommended = await RestClient.GetResponseStringFromUrl(ConnectionContext.HotRestaurantsUrl + _sortBy + "&page=" + page);
                     _list.loadMoreRestaurants(resultRecommended);
                     break;
                 default:
-                    var resultTag = await RestClient.getResponseStringFromUri(ConnectionContext.TagRestaurantsUrl + keyword + "&order=-" + _sortBy + "&page=" + page);
+                    var resultTag = await RestClient.GetResponseStringFromUrl(ConnectionContext.TagRestaurantsUrl + keyword + "&order=-" + _sortBy + "&page=" + page);
                     _list.loadMoreRestaurants(resultTag);
                     break;
             }
@@ -106,18 +106,14 @@ namespace Paris_Saveur_UWP
             {
                 ((TextBlock)(this.NoConnectionText ?? FindName("NoConnectionText"))).Visibility = Visibility.Collapsed;
 
-                //if (_restaurantStyle == null && _restaurantTag == null)
-                //{
-                DownloadRestaurants((int)ListType.Recommended, "", page);
-                //}
-                //else if (_restaurantStyle == null && _restaurantTag != null)
-                //{
-                //    DownloadRestaurants((int)LISTTYPE.Recommended, _restaurantTag.name, _sortBy, page);
-                //}
-                //else
-                //{
-                //    DownloadRestaurants((int)LISTTYPE.Recommended, _restaurantStyle, _sortBy, page);
-                //}
+                if (_restaurantTag == null)
+                {
+                    DownloadRestaurants((int)ListType.Recommended, "", page);
+                }
+                else
+                {
+                    DownloadRestaurants((int)ListType.Recommended, _restaurantTag, page);
+                }
             }
             else
             {

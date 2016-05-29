@@ -14,6 +14,7 @@ namespace Paris_Saveur_UWP.Tools
         public const string HotRestaurantsUrl = RestaurantListUrl + "/list/?order=-";
         public const string TagRestaurantsUrl = RestaurantListUrl + "/list-by-tag/?tag_name=";
         public const string RecommendedRestaurantsUrl = RestaurantListUrl +  "/recommended/?order=-popularity&page=1";
+        public const string HotTagsUrl = RestaurantListUrl + "/tag-cloud/";
 
         public static bool CheckNetworkConnection()
         {

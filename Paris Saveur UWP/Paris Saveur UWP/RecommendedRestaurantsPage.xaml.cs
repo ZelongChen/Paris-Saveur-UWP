@@ -39,7 +39,7 @@ namespace Paris_Saveur_UWP
             ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).IsActive = true;
             ((ProgressRing)(this.LoadingRing ?? FindName("LoadingRing"))).Visibility = Visibility.Visible;
 
-            var result = await RestClient.getResponseStringFromUri(ConnectionContext.RecommendedRestaurantsUrl);
+            var result = await RestClient.GetResponseStringFromUrl(ConnectionContext.RecommendedRestaurantsUrl);
             RestaurantList list = new RestaurantList(result);
             foreach (Restaurant restaurant in list.RestaurantCollection)
             {
