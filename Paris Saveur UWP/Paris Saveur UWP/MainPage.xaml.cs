@@ -40,7 +40,7 @@ namespace Paris_Saveur_UWP
 
         private void MetroGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(TransportStationsPage));
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
