@@ -15,6 +15,7 @@ namespace Paris_Saveur_UWP.Tools
         public const string TagRestaurantsUrl = RestaurantListUrl + "/list-by-tag/?tag_name=";
         public const string RecommendedRestaurantsUrl = RestaurantListUrl +  "/recommended/?order=-popularity&page=1";
         public const string HotTagsUrl = RestaurantListUrl + "/tag-cloud/";
+        public const string NearbyRestaurantsUrl = RestaurantListUrl + "/list-by-location/?geo_lat=latitude&geo_lon=longitude&criterion=geopoint&order=-popularity&page=1";
 
         public static bool CheckNetworkConnection()
         {

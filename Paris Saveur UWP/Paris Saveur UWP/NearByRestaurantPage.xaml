@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Paris_Saveur_UWP.RestaurantListPage"
+    x:Class="Paris_Saveur_UWP.NearByRestaurantPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Paris_Saveur_UWP"
@@ -8,23 +8,17 @@
     mc:Ignorable="d">
 
     <Page.BottomAppBar>
-        <CommandBar x:Name="BottomAppBar">
-            <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByPopularity" Label="" Click="SortByPopularity_Click"/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingScore" Label="" Click="SortByRatingScore_Click"/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingNum" Label="" Click="SortByRatingNum_Click"/>
-            </CommandBar.SecondaryCommands>
+        <CommandBar x:Name="BottomAppBar" ClosedDisplayMode="Compact" Opacity="0.8">
+            <AppBarButton x:Name="BottomLaunchMapButton" x:Uid="NearbyRestaurantPage_AppBarButtonLaunchMap" Label="" Icon="Map" Click="LaunchMap_Click"/>
+            <AppBarButton x:Name="BottomRefreshButton" x:Uid="NearbyRestaurantPage_AppBarButtonRefresh" Label="" Icon="Refresh" Click="Refresh_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
     <Page.TopAppBar>
         <CommandBar x:Name="TopAppBar" VerticalAlignment="Stretch">
-            <CommandBar.SecondaryCommands>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByPopularity" Label="" Click="SortByPopularity_Click"/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingScore" Label="" Click="SortByRatingScore_Click"/>
-                <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingNum" Label="" Click="SortByRatingNum_Click"/>
-            </CommandBar.SecondaryCommands>
+            <AppBarButton x:Name="TopLaunchMapButton" x:Uid="NearbyRestaurantPage_AppBarButtonLaunchMap" Label="" Icon="Map" Click="LaunchMap_Click"/>
+            <AppBarButton x:Name="TopRefreshButton" x:Uid="NearbyRestaurantPage_AppBarButtonRefresh" Label="" Icon="Refresh" Click="Refresh_Click"/>
             <CommandBar.Content>
-                <local:PageHeader x:Name="PagerHeader" x:Uid="RestaurantListPage_Header" Label="" />
+                <local:PageHeader x:Name="PagerHeader" x:Uid="NearbyRestaurantPage_Header" Label="" />
             </CommandBar.Content>
         </CommandBar>
     </Page.TopAppBar>
@@ -67,22 +61,30 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <ScrollViewer x:Name="RestaurantsScrollViewer"
-                      Background="White"
-                      ViewChanged="ScrollViewer_ViewChanged">
-            <Grid Margin="0,0,0,50">
-                <TextBlock 
-                    x:Name="NoConnectionText"
-                    x:DeferLoadStrategy="Lazy"
-                    x:Uid="Global_NoConnectionText"
+        <ScrollViewer x:Name="RestaurantsScrollViewer" Background="White">
+            <Grid>
+                <TextBlock x:Name="NoConnectionText"
+                           x:Uid="NoConnectionText"
+                           x:DeferLoadStrategy="Lazy"
+					        Text=""
+                            Style="{StaticResource NoConnectionTextBlockStyle}"/>
+                <TextBlock x:Name="NoRestaurantText"
+                           x:Uid="NearByRestaurant_NoRestaurantText"
+                           x:DeferLoadStrategy="Lazy"
 					Text=""
-                    Style="{StaticResource NoConnectionTextBlockStyle}"/>
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Visibility="Collapsed"
+					Foreground="Gray"
+					FontSize="22"/>
                 <ListView x:Name="RestaurantListView" 
                           x:DeferLoadStrategy="Lazy"
-					    ItemsSource="{Binding RestaurantCollection}"
-					    ItemTemplate="{StaticResource RestaurantItemTemplate}"
-					    HorizontalContentAlignment="Stretch"
-                          ShowsScrollingPlaceholders="True">
+					Grid.Row="0" 
+					Grid.Column="0"
+					ItemsSource="{Binding Restaurant_list}"
+					ItemTemplate="{StaticResource RestaurantItemTemplate}"
+					HorizontalContentAlignment="Stretch"
+					SelectionChanged="NearbyRestaurantList_SelectionChanged">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -103,8 +105,9 @@
                 </GridView>
                 <ProgressRing x:Name="LoadingRing"
                               x:DeferLoadStrategy="Lazy"
-                              VerticalAlignment="Center"
-                              Style="{StaticResource ProgressRingStyle}"/>
+                    Style="{StaticResource ProgressRingStyle}"
+					Margin="0,250,0,0"
+					VerticalAlignment="Top"/>
             </Grid>
         </ScrollViewer>
     </Grid>
