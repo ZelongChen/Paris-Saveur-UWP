@@ -63,6 +63,10 @@ namespace Paris_Saveur_UWP
             else
             {
                 ((TextBlock)(this.NoRestaurantText ?? FindName("NoRestaurantText"))).Visibility = Visibility.Collapsed;
+                foreach (Restaurant restaurant in _list.RestaurantCollection)
+                {
+                    restaurant.SetupRestaurantModelToDisplay();
+                }
                 if (((ListView)(this.RestaurantListView ?? FindName("RestaurantListView"))).DataContext == null)
                     ((ListView)(this.RestaurantListView ?? FindName("RestaurantListView"))).DataContext = _list;
                 if (((GridView)(this.RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext == null)
@@ -73,6 +77,7 @@ namespace Paris_Saveur_UWP
 
         private void FindRestauransAroundStation(TransportStation station)
         {
+            BeforeLoading();
             DownloadNearbyRestaurant(station.Latitude, station.Longitude);
         }
 
