@@ -186,6 +186,15 @@
   <data name="MainPage_SearchButton.Label" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="NearByRestaurantPage_Header.Label" xml:space="preserve">
+    <value>Restaurants nearby</value>
+  </data>
+  <data name="NearByRestaurantPage_LocationDisabled" xml:space="preserve">
+    <value>GPS is disabled</value>
+  </data>
+  <data name="NearByRestaurant_NoRestaurantText.Text" xml:space="preserve">
+    <value>Cannot find restaurant nearby</value>
+  </data>
   <data name="RecommendedRestaurantsPage_Header.Label" xml:space="preserve">
     <value>Recommended</value>
   </data>

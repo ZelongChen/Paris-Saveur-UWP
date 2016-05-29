@@ -20,7 +20,7 @@ namespace Paris_Saveur_UWP
 
         private void NearByGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(NearByRestaurantPage));
         }
 
         private void HotGrid_Tapped(object sender, TappedRoutedEventArgs e)

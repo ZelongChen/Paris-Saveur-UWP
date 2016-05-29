@@ -32,7 +32,9 @@ namespace Paris_Saveur_UWP.Models
             JsonArray array = json.GetNamedArray("restaurant_list");
             for (int i = 0; i < array.Count; i++)
             {
-                _restaurantCollection.Add(new Restaurant(array[i].GetObject()));
+                var restaurant = new Restaurant(array[i].GetObject());
+                restaurant.SetupRestaurantModelToDisplay();
+                _restaurantCollection.Add(restaurant);
             }
         }
 

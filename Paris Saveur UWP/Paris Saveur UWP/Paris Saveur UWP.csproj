@@ -115,6 +115,9 @@
     <Compile Include="Models\TagList.cs" />
     <Compile Include="Models\TransportStation.cs" />
     <Compile Include="Models\TransportStationList.cs" />
+    <Compile Include="NearByRestaurantPage.xaml.cs">
+      <DependentUpon>NearByRestaurantPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NearByRestaurantPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageHeader.xaml">
       <SubType>Designer</SubType>

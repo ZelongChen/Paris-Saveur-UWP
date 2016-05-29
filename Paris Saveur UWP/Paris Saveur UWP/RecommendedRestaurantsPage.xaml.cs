@@ -41,10 +41,7 @@ namespace Paris_Saveur_UWP
 
             var result = await RestClient.GetResponseStringFromUrl(ConnectionContext.RecommendedRestaurantsUrl);
             RestaurantList list = new RestaurantList(result);
-            foreach (Restaurant restaurant in list.RestaurantCollection)
-            {
-                restaurant.SetupRestaurantModelToDisplay();
-            }
+
             ((ListView)(this.RecommendedRestaurantList ?? FindName("RecommendedRestaurantList"))).DataContext = list;
             ((GridView)(this.RecommendedRestaurantGridView ?? FindName("RecommendedRestaurantGridView"))).DataContext = list;
 
