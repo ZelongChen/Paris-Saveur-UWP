@@ -22,8 +22,12 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <!--<Image Grid.Column="0" MaxWidth="150" Source="Assets/Images/restaurant_thumbnail_placeholder.jpg" Margin="5,5,15,5"></Image>-->
-                <Image x:Name="restaurantThumbnail" Grid.Column="0" MaxWidth="150"  Source="{Binding ThumbnailUrl}" Margin="5,5,15,5"></Image>
+
+                <Grid Grid.Column="0">
+                    <Image MaxWidth="150" Source="Assets/Images/restaurant_thumbnail_placeholder.jpg" Margin="5,5,15,5"></Image>
+                    <Image x:Name="restaurantThumbnail" MaxWidth="150"  Source="{Binding ThumbnailUrl}" Margin="5,5,15,5"></Image>
+                </Grid>
+
                 <Grid x:Name="restaurantSimpleInfoStack" Grid.Column="1" HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
