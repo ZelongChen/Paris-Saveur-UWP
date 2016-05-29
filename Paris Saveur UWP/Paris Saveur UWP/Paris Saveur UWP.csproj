@@ -108,10 +108,13 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlphaKeyGroup.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantList.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\TagList.cs" />
+    <Compile Include="Models\TransportStation.cs" />
+    <Compile Include="Models\TransportStationList.cs" />
     <Compile Include="PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,9 @@
     <Compile Include="Tools\ConnectionContext.cs" />
     <Compile Include="Tools\LocalizedStrings.cs" />
     <Compile Include="Tools\RestClient.cs" />
+    <Compile Include="TransportStationsPage.xaml.cs">
+      <DependentUpon>TransportStationsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -185,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransportStationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
