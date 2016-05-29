@@ -75,10 +75,6 @@ namespace Paris_Saveur_UWP
                     break;
             }
 
-            foreach (Restaurant restaurant in _list.RestaurantCollection)
-            {
-                restaurant.SetupRestaurantModelToDisplay();
-            }
             if (((ListView)(this.RestaurantListView ?? FindName("RestaurantListView"))).DataContext == null)
                 ((ListView)(this.RestaurantListView ?? FindName("RestaurantListView"))).DataContext = _list;
             if (((GridView)(this.RestaurantGridView ?? FindName("RestaurantGridView"))).DataContext == null)
