@@ -7,95 +7,174 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Image x:Name="RestaurantThumbnail" Stretch="Fill" Source="{Binding ThumbnailUrl}"/>
-        </Grid>
-        <TextBlock x:Name="RestaurantDescription" 
+    <Page.Resources>
+        <Style x:Key="StretchHeaderContainerStyle"
+               TargetType="ListViewBaseHeaderItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer x:Name="RestaurantsScrollViewer"
+                      Background="White">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="Auto" MinHeight="0"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image x:Name="RestaurantThumbnail" Stretch="Fill" Source="{Binding ThumbnailUrl}"/>
+                <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,0,10">
+                    <TextBlock x:Name="RestaurantName" 
+                       Foreground="White" 
+                       Text="{Binding Name}"></TextBlock>
+                    <TextBlock x:Name="RestaurantTags" 
+                       Foreground="White" 
+                       Text="{Binding Tags}"></TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GridViewItem Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE0A5;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <TextBlock x:Uid="RestaurantDetailPage_FavoriteTextBlock" 
+							    Text="Favorite"
+							    Foreground="Black"
+							    FontSize="17"/>
+                    </StackPanel>
+                </GridViewItem>
+                <GridViewItem Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE717;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <TextBlock x:Uid="RestaurantDetailPage_CallTextBlock" 
+							    Text="Call"
+							    Foreground="Black"
+							    FontSize="17"/>
+                    </StackPanel>
+                </GridViewItem>
+                <GridViewItem Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE90A;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <TextBlock x:Uid="RestaurantDetailPage_CommentTextBlock" 
+							    Text="Comment"
+							    Foreground="Black"
+							    FontSize="17"/>
+                    </StackPanel>
+                </GridViewItem>
+            </Grid>
+
+
+            <ListViewHeaderItem x:Name="RestaurantDescriptionGrid" Grid.Row="2" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+                <ContentControl HorizontalContentAlignment="Stretch">
+                    <TextBlock x:Name="RestaurantDescription" 
 						Text="{Binding Description}"
 						HorizontalAlignment="Stretch" 
 						TextWrapping="Wrap"
 						FontSize="17"
-						Grid.Row="1" 
-						Foreground="Black"
-						Padding="10"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Image Source="Assets/restaurant_detail_style.png" Margin="5"/>
-            <TextBlock x:Name="RestaurantStyle" 
-							Text="{Binding Style}"    
-							Foreground="Black" 
-							FontSize="17"
-							VerticalAlignment="Center"
-							Margin="10,0,0,0"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <Image Source="Assets/restaurant_detail_price.png" Margin="5"/>
-            <TextBlock x:Name="RestaurantPrice" 
-							Text="{Binding ConsumptionPerCapita}"   
-							Foreground="Black"
-							FontSize="17"
-							VerticalAlignment="Center"
-							Margin="10,0,0,0"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <Image Source="Assets/restaurant_detail_review.png" Margin="5"/>
-            <Image x:Name="Star1" Source="{Binding Star1}" Margin="10"/>
-            <Image x:Name="Star2" Source="{Binding Star2}" Margin="10"/>
-            <Image x:Name="Star3" Source="{Binding Star3}" Margin="10"/>
-            <Image x:Name="Star4" Source="{Binding Star4}" Margin="10"/>
-            <Image x:Name="Star5" Source="{Binding Star5}" Margin="10"/>
-        </StackPanel>
-        <Grid x:Name="RestaurantAddressGrid" Grid.Row="5" Tapped="RestaurantAddressGrid_Tapped">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Image Source="Assets/restaurant_detail_location.png" Grid.Column="0" HorizontalAlignment="Left" Margin="5"/>
-            <TextBlock x:Name="RestaurantAddress" 
-                            Grid.Column="1"
+						Foreground="Black"/>
+                </ContentControl>
+            </ListViewHeaderItem>
+
+            <ListViewHeaderItem x:Name="RestaurantCommentsGrid" Grid.Row="3" Tapped="RestaurantCommentsGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+                <ContentControl HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="&#xE91C;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock x:Name="Star1" Text="{Binding Star1}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star2" Text="{Binding Star2}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star3" Text="{Binding Star3}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star4" Text="{Binding Star4}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star5" Text="{Binding Star5}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="restaurantSimpleInfoReview" FontSize="16" Foreground="Black" Text="{Binding RatingScoreAndReviewNumbers}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Margin="5" Orientation="Horizontal">
+                            <TextBlock x:Name="RestaurantPrice" 
+							        Text="{Binding ConsumptionPerCapita}"   
+							        FontSize="17"
+							        VerticalAlignment="Center"
+                                    Foreground="Black"
+							        Margin="10,0,10,0"/>
+                            <FontIcon Glyph="&#xE00F;" Foreground="Gray"/>
+                        </StackPanel>
+                    </Grid>
+                </ContentControl>
+            </ListViewHeaderItem>
+            <ListViewHeaderItem x:Name="RestaurantAddressGrid" Grid.Row="4" Tapped="RestaurantAddressGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+                <ContentControl HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="&#xE707;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <TextBlock x:Name="RestaurantAddress" 
+                               Grid.Column="1"
 							Text="{Binding Address}"
 							Foreground="Black"
 							FontSize="17"
 							VerticalAlignment="Center"
                             HorizontalAlignment="Left"
 							Margin="10,0,0,0"/>
-            <Image Source="Assets/restaurant_detail_indicator.png" Grid.Column="2" HorizontalAlignment="Right" Margin="5"/>
-        </Grid>
-        <StackPanel Orientation="Horizontal" Grid.Row="6">
-            <Image Source="Assets/restaurant_detail_metro.png" Margin="5"/>
-            <TextBlock x:Name="RestaurantMetro"
+                        <FontIcon Grid.Column="2" HorizontalAlignment="Right" Margin="5" Glyph="&#xE00F;" Foreground="Gray"/>
+                    </Grid>
+                </ContentControl>
+            </ListViewHeaderItem>
+            <ListViewHeaderItem Grid.Row="5" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+                <ContentControl HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="&#xEB4D;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <TextBlock x:Name="RestaurantMetro"
+                               Grid.Column="1"
 							Text="{Binding PublicTransit}"
 							Foreground="Black"
 							FontSize="17"
 							VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
 							Margin="10,0,0,0"/>
-        </StackPanel>
-        <Grid x:Name="RestaurantTimeGrid" Grid.Row="7" Tapped="RestaurantTimeGrid_Tapped">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Image Source="Assets/restaurant_detail_clock.png" Grid.Column="0" Margin="5"/>
-            <TextBlock x:Name="RestaurantTime" 
+                    </Grid>
+                </ContentControl>
+            </ListViewHeaderItem>
+            <ListViewHeaderItem x:Name="RestaurantTimeGrid" Grid.Row="6" Tapped="RestaurantTimeGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+                <ContentControl HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="&#xE823;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <TextBlock x:Name="RestaurantTime" 
                             Grid.Column="1"
 							Text="{Binding OpeningHours}"
 							Foreground="Black"
 							FontSize="17"
-							VerticalAlignment="Center"
+							VerticalAlignment="Top"
 							Margin="10,0,0,0"/>
-            <Image Source="Assets/restaurant_detail_indicator.png" Grid.Column="2" HorizontalAlignment="Right" Margin="5"/>
+                    </Grid>
+                </ContentControl>
+            </ListViewHeaderItem>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>

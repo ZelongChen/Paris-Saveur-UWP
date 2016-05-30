@@ -6,6 +6,29 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="ListViewHeaderItemStyle_WidthStretch" TargetType="ListViewHeaderItem">
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ListViewHeaderItemThemeFontSize}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
+            <Setter Property="Padding" Value="12,8,12,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="MinHeight" Value="{ThemeResource ListViewHeaderItemMinHeight}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewHeaderItem">
+                        <StackPanel BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Rectangle HorizontalAlignment="Stretch" Height="1" Margin="12,8,12,0" Stroke="{ThemeResource SystemControlForegroundBaseLowBrush}" StrokeThickness="0.5" VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Page.TopAppBar>
         <CommandBar x:Name="CommandBar" VerticalAlignment="Stretch" Foreground="White" Background="{StaticResource AppThemeColor}" Style="{StaticResource CommandBarStyleWithoutEllipsis}">
@@ -33,7 +56,7 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Height="40" Background="Transparent"></Border>
-        
+
         <ListViewItem Grid.Row="1" Background="White">
             <ContentControl>
                 <StackPanel Orientation="Horizontal" Height="80">
@@ -44,7 +67,7 @@
         </ListViewItem>
 
         <Border Grid.Row="2" Height="20" Background="Transparent"></Border>
-        
+
         <ListViewHeaderItem Grid.Row="3" Background="White" Margin="0">
             <ContentControl>
                 <StackPanel Orientation="Horizontal" Height="Auto">
@@ -64,11 +87,18 @@
 
         <Border Grid.Row="5" Height="20" Background="Transparent"></Border>
 
-        <ListViewHeaderItem Grid.Row="6" Background="White" Margin="0">
+        <ListViewHeaderItem Grid.Row="6" Background="White" Margin="0" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
             <ContentControl>
-                <StackPanel Orientation="Horizontal" Height="Auto">
-                    <TextBlock Text="&#xE774;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Global" />
-                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="&#xE774;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Global" />
+                    <TextBlock Grid.Column="1" Text="Address"  HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="2" Text="&#xE774;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Global" HorizontalAlignment="Right" />
+                </Grid>
             </ContentControl>
         </ListViewHeaderItem>
 

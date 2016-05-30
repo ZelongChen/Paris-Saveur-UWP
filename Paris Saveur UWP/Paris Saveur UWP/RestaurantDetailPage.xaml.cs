@@ -1,4 +1,5 @@
 ﻿using Paris_Saveur_UWP.Models;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -18,6 +19,10 @@ namespace Paris_Saveur_UWP
         {
             _restaurant = e.Parameter as Restaurant;
             this.DataContext = _restaurant;
+            if (_restaurant.Description == null || _restaurant.Description.Length == 0)
+            {
+                this.RestaurantDescriptionGrid.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void RestaurantAddressGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -26,6 +31,11 @@ namespace Paris_Saveur_UWP
         }
 
         private void RestaurantTimeGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void RestaurantCommentsGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
 
         }

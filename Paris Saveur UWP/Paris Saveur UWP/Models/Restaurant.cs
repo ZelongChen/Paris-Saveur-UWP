@@ -29,7 +29,7 @@ namespace Paris_Saveur_UWP.Models
         public string UrlPath { get; set; }
         public int RatingNumbers { get; set; }
         public double RatingScore { get; set; }
-        public string RatingScoreAndReviewNumers { get; set; }
+        public string RatingScoreAndReviewNumbers { get; set; }
         public int ConsumptionNumbers { get; set; }
         public string ConsumptionPerCapita { get; set; }
         public bool IsAdRanking { get; set; }
@@ -95,7 +95,7 @@ namespace Paris_Saveur_UWP.Models
 
         private void ShowReviewScoreAndNumber()
         {
-            this.RatingScoreAndReviewNumers = this.RatingScore + " (" + RatingNumbers + " " + RestaurantModel_CommentNumbers_Globalization;
+            this.RatingScoreAndReviewNumbers = this.RatingScore + " (" + RatingNumbers + " " + RestaurantModel_CommentNumbers_Globalization;
 
         }
 
