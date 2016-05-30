@@ -7,13 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <Style x:Key="StretchHeaderContainerStyle"
-               TargetType="ListViewBaseHeaderItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        </Style>
-    </Page.Resources>
-
     <ScrollViewer x:Name="RestaurantDetailScrollViewer"
                       Background="White">
         <Grid Background="White">
@@ -88,7 +81,7 @@
                 </ContentControl>
             </ListViewHeaderItem>
 
-            <ListViewHeaderItem x:Name="RestaurantCommentsGrid" Grid.Row="3" Tapped="RestaurantCommentsGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+            <ListViewItem x:Name="RestaurantCommentsGrid" Grid.Row="3" Tapped="RestaurantCommentsGrid_Tapped" Style="{StaticResource ListViewItemStyle_WidthStretch}" >
                 <ContentControl HorizontalContentAlignment="Stretch">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -116,8 +109,8 @@
                         </StackPanel>
                     </Grid>
                 </ContentControl>
-            </ListViewHeaderItem>
-            <ListViewHeaderItem x:Name="RestaurantAddressGrid" Grid.Row="4" Tapped="RestaurantAddressGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+            </ListViewItem>
+            <ListViewItem x:Name="RestaurantAddressGrid" Grid.Row="4" Tapped="RestaurantAddressGrid_Tapped" Style="{StaticResource ListViewItemStyle_WidthStretch}">
                 <ContentControl HorizontalContentAlignment="Stretch">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -137,7 +130,7 @@
                         <FontIcon Grid.Column="2" HorizontalAlignment="Right" Margin="5" Glyph="&#xE00F;" Foreground="Gray"/>
                     </Grid>
                 </ContentControl>
-            </ListViewHeaderItem>
+            </ListViewItem>
             <ListViewHeaderItem Grid.Row="5" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
                 <ContentControl HorizontalContentAlignment="Stretch">
                     <Grid>
