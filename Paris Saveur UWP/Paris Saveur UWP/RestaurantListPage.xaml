@@ -17,7 +17,7 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Page.TopAppBar>
-        <CommandBar x:Name="TopAppBar" VerticalAlignment="Stretch">
+        <CommandBar x:Name="TopAppBar" VerticalAlignment="Stretch" Style="{StaticResource CommandBarStyleWithEllipsis}">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByPopularity" Label="" Click="SortByPopularity_Click"/>
                 <AppBarButton x:Uid="RestaurantListPage_AppBarButtonSortByRatingScore" Label="" Click="SortByRatingScore_Click"/>
@@ -37,7 +37,7 @@
                         <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="TopAppBar.Style" Value="{StaticResource CommandBarStyleWithoutEllipsis}"></Setter>
+                        <Setter Target="TopAppBar.IsEnabled" Value="False"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Visible"></Setter>
                         <Setter Target="RestaurantListView.Visibility" Value="Visible"></Setter>
                         <Setter Target="RestaurantGridView.Visibility" Value="Collapsed"></Setter>
@@ -48,7 +48,7 @@
                         <AdaptiveTrigger MinWindowWidth="600"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="TopAppBar.Style" Value="{StaticResource CommandBarStyleWithEllipsis}"></Setter>
+                        <Setter Target="TopAppBar.IsEnabled" Value="True"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
                         <Setter Target="RestaurantListView.Visibility" Value="Visible"></Setter>
                         <Setter Target="RestaurantGridView.Visibility" Value="Collapsed"></Setter>
@@ -59,7 +59,7 @@
                         <AdaptiveTrigger MinWindowWidth="900"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="TopAppBar.Style" Value="{StaticResource CommandBarStyleWithEllipsis}"></Setter>
+                        <Setter Target="TopAppBar.IsEnabled" Value="True"></Setter>
                         <Setter Target="BottomAppBar.Visibility" Value="Collapsed"></Setter>
                         <Setter Target="RestaurantListView.Visibility" Value="Collapsed"></Setter>
                         <Setter Target="RestaurantGridView.Visibility" Value="Visible"></Setter>
