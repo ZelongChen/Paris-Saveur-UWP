@@ -14,7 +14,7 @@
         </Style>
     </Page.Resources>
 
-    <ScrollViewer x:Name="RestaurantsScrollViewer"
+    <ScrollViewer x:Name="RestaurantDetailScrollViewer"
                       Background="White">
         <Grid Background="White">
             <Grid.RowDefinitions>
