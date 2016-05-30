@@ -492,97 +492,109 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid x:Name="RecommendedGrid" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="RecommendedGrid_Tapped">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1.3*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="&#xEB68;" 
+                        <GridViewItem x:Name="RecommendedGrid" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="RecommendedGrid_Tapped">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.3*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="&#xEB68;" 
                                        Style="{StaticResource MainPageItemsIconsStyle}"
                                        Foreground="{StaticResource AppThemeColor}" 
                                        AutomationProperties.Name="Recommended" />
 
-                            <TextBlock x:Name="RecommendedText" 
+                                <TextBlock x:Name="RecommendedText" 
 								Grid.Row="1"
                                 x:Uid="MainPage_Home_Recommended"
 								Text="" 
 								Style="{StaticResource MainPageItemsTextStyle}"/>
-                        </Grid>
-                        <Grid x:Name="NearByGrid" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="NearByGrid_Tapped">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1.3*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="&#xE707;" 
+                            </Grid>
+                        </GridViewItem>
+                        <GridViewItem x:Name="NearByGrid" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="NearByGrid_Tapped">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.3*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="&#xE707;" 
                                        Style="{StaticResource MainPageItemsIconsStyle}"
                                        Foreground="{StaticResource AppThemeColor}" 
                                        AutomationProperties.Name="Nearby" />
-                            <TextBlock x:Name="NearByText" 
+                                <TextBlock x:Name="NearByText" 
 								Grid.Row="1"
                                 x:Uid="MainPage_Home_Nearby"
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
-                        </Grid>
-                        <Grid x:Name="HotGrid" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="HotGrid_Tapped">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1.3*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="&#xE8E1;" 
+                            </Grid>
+                        </GridViewItem>
+                        <GridViewItem x:Name="HotGrid" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="HotGrid_Tapped">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.3*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="&#xE8E1;" 
                                        Style="{StaticResource MainPageItemsIconsStyle}"
                                        Foreground="{StaticResource AppThemeColor}" 
                                        AutomationProperties.Name="Hot" />
-                            <TextBlock x:Name="HotText"
+                                <TextBlock x:Name="HotText"
 								Grid.Row="1"
                                 x:Uid="MainPage_Home_Hot"
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
-                        </Grid>
-                        <Grid x:Name="MyFavoritesGrid" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="MyFavoritesGrid_Tapped">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1.3*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="&#xE735;" 
+                            </Grid>
+                        </GridViewItem>
+                        <GridViewItem x:Name="MyFavoritesGrid" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="MyFavoritesGrid_Tapped">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.3*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="&#xE735;" 
                                        Style="{StaticResource MainPageItemsIconsStyle}"
                                        Foreground="{StaticResource AppThemeColor}" 
                                        AutomationProperties.Name="Favorites" />
-                            <TextBlock x:Name="MyFavoritesText" 
+                                <TextBlock x:Name="MyFavoritesText" 
 								Grid.Row="1"
                                 x:Uid="MainPage_Home_MyFavorites"
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
-                        </Grid>
-                        <Grid x:Name="HotTagGrid" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="HotTagGrid_Tapped">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1.3*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="&#xE8EC;" 
+                            </Grid>
+                        </GridViewItem>
+                        <GridViewItem x:Name="HotTagGrid" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Tapped="HotTagGrid_Tapped">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.3*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="&#xE8EC;" 
                                        Style="{StaticResource MainPageItemsIconsStyle}"
                                        Foreground="{StaticResource AppThemeColor}" 
                                        AutomationProperties.Name="Tags" />
-                            <TextBlock x:Name="HotTagText" 
+                                <TextBlock x:Name="HotTagText" 
 								Grid.Row="1"
                                 x:Uid="MainPage_Home_HotTag"
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
-                        </Grid>
-                        <Grid x:Name="MetroGrid" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="MetroGrid_Tapped">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1.3*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="&#xEB4D;" 
+                            </Grid>
+                        </GridViewItem>
+                        <GridViewItem x:Name="MetroGrid" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="3" Tapped="MetroGrid_Tapped">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.3*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="&#xEB4D;" 
                                        Style="{StaticResource MainPageItemsIconsStyle}"
                                        Foreground="{StaticResource AppThemeColor}" 
                                        AutomationProperties.Name="Metro" />
-                            <TextBlock x:Name="MetroText" 
+                                <TextBlock x:Name="MetroText" 
 								Grid.Row="1"
                                 x:Uid="MainPage_Home_Metro"
 								Text=""  
 								Style="{StaticResource MainPageItemsTextStyle}"/>
-                        </Grid>
+                            </Grid>
+                        </GridViewItem>
                     </Grid>
                 </Grid>
 
