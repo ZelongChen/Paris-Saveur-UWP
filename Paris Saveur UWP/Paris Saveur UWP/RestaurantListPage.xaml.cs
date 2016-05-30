@@ -142,5 +142,11 @@ namespace Paris_Saveur_UWP
             _list.clearRestaurantList();
             LoadPage(_currentPage++);
         }
+
+        private void RestaurantListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Restaurant restaurant = e.AddedItems[0] as Restaurant;
+            Frame.Navigate(typeof(RestaurantDetailPage), restaurant);
+        }
     }
 }

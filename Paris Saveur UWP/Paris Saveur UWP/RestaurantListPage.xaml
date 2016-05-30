@@ -82,7 +82,7 @@
 					    ItemsSource="{Binding RestaurantCollection}"
 					    ItemTemplate="{StaticResource RestaurantItemTemplate}"
 					    HorizontalContentAlignment="Stretch"
-                          ShowsScrollingPlaceholders="True">
+                          SelectionChanged="RestaurantListView_SelectionChanged">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -94,7 +94,7 @@
                           ItemsSource="{Binding RestaurantCollection}"
                           ItemTemplate="{StaticResource RestaurantItemTemplate}"
                           HorizontalAlignment="Stretch"
-                          ShowsScrollingPlaceholders="True">
+                          SelectionChanged="RestaurantListView_SelectionChanged">
                     <GridView.ItemContainerStyle>
                         <Style TargetType="GridViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

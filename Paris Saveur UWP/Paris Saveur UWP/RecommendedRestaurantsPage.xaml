@@ -79,7 +79,8 @@
                           x:DeferLoadStrategy="Lazy"
 					    ItemsSource="{Binding RestaurantCollection}"
 					    ItemTemplate="{StaticResource RestaurantItemTemplate}"
-					    HorizontalContentAlignment="Stretch">
+					    HorizontalContentAlignment="Stretch"
+                          SelectionChanged="RecommendedRestaurantList_SelectionChanged">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -90,7 +91,8 @@
                           x:DeferLoadStrategy="Lazy"
                           ItemsSource="{Binding RestaurantCollection}"
                           ItemTemplate="{StaticResource RestaurantItemTemplate}"
-                          HorizontalAlignment="Stretch">
+                          HorizontalAlignment="Stretch"
+                          SelectionChanged="RecommendedRestaurantList_SelectionChanged">
                     <GridView.ItemContainerStyle>
                         <Style TargetType="GridViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

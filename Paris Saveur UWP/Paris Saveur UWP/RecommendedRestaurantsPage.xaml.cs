@@ -53,5 +53,11 @@ namespace Paris_Saveur_UWP
         {
             RefreshPage();
         }
+
+        private void RecommendedRestaurantList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Restaurant restaurant = e.AddedItems[0] as Restaurant;
+            Frame.Navigate(typeof(RestaurantDetailPage), restaurant);
+        }
     }
 }
