@@ -7,8 +7,53 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer x:Name="RestaurantDetailScrollViewer"
-                      Background="White">
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.Resources>
+        <DataTemplate x:Name="CommentsTemplate" x:Key="CommentsTemplate">
+            <Grid>
+                <TextBlock Text="Comment" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Name="ToCommentsTemplate" x:Key="ToCommentTemplate">
+            <Grid>
+                <TextBlock Text="To Comment" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Name="DishesTemplate" x:Key="DishesTemplate">
+            <Grid>
+                <TextBlock Text="Dishes" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <ScrollViewer x:Name="RestaurantDetailScrollViewer" Background="White">
+        
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveStates" CurrentStateChanged="AdaptiveStates_CurrentStateChanged">
+                <VisualState x:Name="DefaultState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="MasterColumn.Width" Value="*" />
+                        <Setter Target="DetailColumn.Width" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
         <Grid Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="6*"/>
@@ -20,6 +65,11 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="MasterColumn" Width="600"/>
+                <ColumnDefinition x:Name="DetailColumn" Width="*"/>
+            </Grid.ColumnDefinitions>
+            
             <Grid Grid.Row="0">
                 <Image x:Name="RestaurantThumbnail" Stretch="Fill" Source="{Binding ThumbnailUrl}"/>
                 <StackPanel Orientation="Vertical"
@@ -150,7 +200,7 @@
                     </Grid>
                 </ContentControl>
             </ListViewHeaderItem>
-            <ListViewHeaderItem x:Name="RestaurantTimeGrid" Grid.Row="6" Tapped="RestaurantTimeGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+            <ListViewHeaderItem x:Name="RestaurantTimeGrid" Grid.Row="6" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
                 <ContentControl HorizontalContentAlignment="Stretch">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -163,11 +213,42 @@
 							Text="{Binding OpeningHours}"
 							Foreground="Black"
 							FontSize="17"
-							VerticalAlignment="Top"
+							VerticalAlignment="Center"
 							Margin="10,0,0,0"/>
                     </Grid>
                 </ContentControl>
             </ListViewHeaderItem>
+            <ListViewHeaderItem x:Name="RestaurantDishesGrid" Grid.Row="7" Tapped="RestaurantDishesGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+                <ContentControl HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0" Glyph="&#xE8A9;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
+                        <TextBlock x:Name="RestaurantDishes" 
+                            Grid.Column="1"
+							Text="Dishes"
+							Foreground="Black"
+							FontSize="17"
+							VerticalAlignment="Center"
+							Margin="10,0,0,0"/>
+                    </Grid>
+                </ContentControl>
+            </ListViewHeaderItem>
+
+            <ContentPresenter
+                x:Name="DetailContentPresenter"
+                Grid.Column="1"
+                Grid.RowSpan="8"
+                BorderThickness="1,0,0,0"
+                Padding="24,0"
+                ContentTemplate="{StaticResource CommentsTemplate}"
+                BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}">
+                <ContentPresenter.ContentTransitions>
+                    <TransitionCollection />
+                </ContentPresenter.ContentTransitions>
+            </ContentPresenter>
         </Grid>
     </ScrollViewer>
 </Page>
