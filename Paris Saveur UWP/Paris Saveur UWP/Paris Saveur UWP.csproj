@@ -105,6 +105,9 @@
     <Compile Include="CommentPage.xaml.cs">
       <DependentUpon>CommentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DishesPage.xaml.cs">
+      <DependentUpon>DishesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HotTagPage.xaml.cs">
       <DependentUpon>HotTagPage.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,9 @@
     </Compile>
     <Compile Include="TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToCommentPage.xaml.cs">
+      <DependentUpon>ToCommentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\ConnectionContext.cs" />
     <Compile Include="Tools\LocalizedStrings.cs" />
@@ -179,6 +185,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DishesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HotTagPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToCommentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

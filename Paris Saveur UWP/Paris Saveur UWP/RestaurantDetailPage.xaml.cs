@@ -10,6 +10,13 @@ namespace Paris_Saveur_UWP
     public sealed partial class RestaurantDetailPage : Page
     {
         private Restaurant _restaurant;
+        private int _lastSelectedItem;
+        private enum SelectedItems
+        {
+            Comment,
+            ToComment,
+            Dishes
+        }
 
         public RestaurantDetailPage()
         {
@@ -24,6 +31,8 @@ namespace Paris_Saveur_UWP
             {
                 this.RestaurantDescriptionGrid.Visibility = Visibility.Collapsed;
             }
+
+            _lastSelectedItem = (int)SelectedItems.Comment;
 
             UpdateForVisualState(AdaptiveStates.CurrentState);
 
@@ -42,7 +51,19 @@ namespace Paris_Saveur_UWP
             if (isNarrow && oldState == DefaultState)
             {
                 // Resize down to the detail item. Don't play a transition.
-                Frame.Navigate(typeof(CommentPage), _restaurant.Pk);
+                switch (_lastSelectedItem)
+                {
+                    case (int)SelectedItems.Dishes:
+                        Frame.Navigate(typeof(DishesPage), _restaurant.Pk);
+                        break;
+                    case (int)SelectedItems.ToComment:
+                        Frame.Navigate(typeof(ToCommentPage), _restaurant.Pk);
+                        break;
+                    default:
+                        Frame.Navigate(typeof(CommentPage), _restaurant.Pk);
+                        break;
+                }
+
             }
 
             //EntranceNavigationTransitionInfo.SetIsTargetElement(RestaurantDetailPage, isNarrow);
@@ -68,10 +89,11 @@ namespace Paris_Saveur_UWP
 
         private void RestaurantDishesGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            _lastSelectedItem = (int)SelectedItems.Dishes;
 
             if (AdaptiveStates.CurrentState == NarrowState)
             {
-                Frame.Navigate(typeof(CommentPage), _restaurant.Pk);
+                Frame.Navigate(typeof(DishesPage), _restaurant.Pk);
             }
             else
             {
@@ -87,6 +109,7 @@ namespace Paris_Saveur_UWP
 
         private void RestaurantCommentsGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            _lastSelectedItem = (int)SelectedItems.Comment;
 
             if (AdaptiveStates.CurrentState == NarrowState)
             {
@@ -95,6 +118,21 @@ namespace Paris_Saveur_UWP
             else
             {
                 this.DetailContentPresenter.ContentTemplate = this.CommentsTemplate;
+                EnableContentTransitions();
+            }
+        }
+
+        private void ToCommentGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            _lastSelectedItem = (int)SelectedItems.ToComment;
+
+            if (AdaptiveStates.CurrentState == NarrowState)
+            {
+                Frame.Navigate(typeof(ToCommentPage), _restaurant.Pk);
+            }
+            else
+            {
+                this.DetailContentPresenter.ContentTemplate = this.ToCommentsTemplate;
                 EnableContentTransitions();
             }
         }

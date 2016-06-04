@@ -108,7 +108,7 @@
 							    FontSize="17"/>
                     </StackPanel>
                 </GridViewItem>
-                <GridViewItem Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <GridViewItem Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="ToCommentGrid_Tapped">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <FontIcon Glyph="&#xE90A;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
                         <TextBlock x:Uid="RestaurantDetailPage_CommentTextBlock" 
@@ -218,12 +218,13 @@
                     </Grid>
                 </ContentControl>
             </ListViewHeaderItem>
-            <ListViewHeaderItem x:Name="RestaurantDishesGrid" Grid.Row="7" Tapped="RestaurantDishesGrid_Tapped" Style="{StaticResource ListViewHeaderItemStyle_WidthStretch}">
+            <ListViewItem x:Name="RestaurantDishesGrid" Grid.Row="7" Tapped="RestaurantDishesGrid_Tapped" Style="{StaticResource ListViewItemStyle_WidthStretch}">
                 <ContentControl HorizontalContentAlignment="Stretch">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <FontIcon Grid.Column="0" Glyph="&#xE8A9;" Foreground="{StaticResource AppThemeColor}" Margin="5"/>
                         <TextBlock x:Name="RestaurantDishes" 
@@ -233,9 +234,10 @@
 							FontSize="17"
 							VerticalAlignment="Center"
 							Margin="10,0,0,0"/>
+                        <FontIcon Grid.Column="2" HorizontalAlignment="Right" Margin="5" Glyph="&#xE00F;" Foreground="Gray"/>
                     </Grid>
                 </ContentControl>
-            </ListViewHeaderItem>
+            </ListViewItem>
 
             <ContentPresenter
                 x:Name="DetailContentPresenter"
