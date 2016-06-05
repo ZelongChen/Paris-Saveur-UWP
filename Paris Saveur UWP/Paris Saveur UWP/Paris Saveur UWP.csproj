@@ -115,12 +115,15 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\AlphaKeyGroup.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentList.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantList.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\TagList.cs" />
     <Compile Include="Models\TransportStation.cs" />
     <Compile Include="Models\TransportStationList.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="NearByRestaurantPage.xaml.cs">
       <DependentUpon>NearByRestaurantPage.xaml</DependentUpon>
     </Compile>

@@ -54,13 +54,13 @@ namespace Paris_Saveur_UWP
                 switch (_lastSelectedItem)
                 {
                     case (int)SelectedItems.Dishes:
-                        Frame.Navigate(typeof(DishesPage), _restaurant.Pk);
+                        Frame.Navigate(typeof(DishesPage), _restaurant);
                         break;
                     case (int)SelectedItems.ToComment:
-                        Frame.Navigate(typeof(ToCommentPage), _restaurant.Pk);
+                        Frame.Navigate(typeof(ToCommentPage), _restaurant);
                         break;
                     default:
-                        Frame.Navigate(typeof(CommentPage), _restaurant.Pk);
+                        Frame.Navigate(typeof(CommentPage), _restaurant);
                         break;
                 }
 
@@ -93,7 +93,7 @@ namespace Paris_Saveur_UWP
 
             if (AdaptiveStates.CurrentState == NarrowState)
             {
-                Frame.Navigate(typeof(DishesPage), _restaurant.Pk);
+                Frame.Navigate(typeof(DishesPage), _restaurant);
             }
             else
             {
@@ -113,7 +113,7 @@ namespace Paris_Saveur_UWP
 
             if (AdaptiveStates.CurrentState == NarrowState)
             {
-                Frame.Navigate(typeof(CommentPage), _restaurant.Pk);
+                Frame.Navigate(typeof(CommentPage), _restaurant);
             }
             else
             {
@@ -128,7 +128,7 @@ namespace Paris_Saveur_UWP
 
             if (AdaptiveStates.CurrentState == NarrowState)
             {
-                Frame.Navigate(typeof(ToCommentPage), _restaurant.Pk);
+                Frame.Navigate(typeof(ToCommentPage), _restaurant);
             }
             else
             {

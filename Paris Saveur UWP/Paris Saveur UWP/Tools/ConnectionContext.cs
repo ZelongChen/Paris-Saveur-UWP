@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.NetworkInformation;
 
 namespace Paris_Saveur_UWP.Tools
 {
@@ -16,6 +11,7 @@ namespace Paris_Saveur_UWP.Tools
         public const string RecommendedRestaurantsUrl = RestaurantListUrl +  "/recommended/?order=-popularity&page=1";
         public const string HotTagsUrl = RestaurantListUrl + "/tag-cloud/";
         public const string NearbyRestaurantsUrl = RestaurantListUrl + "/list-by-location/?geo_lat=latitude&geo_lon=longitude&criterion=geopoint&order=-popularity&page=1";
+        public const string RestaurantCommentsUrl = RestaurantListUrl + "/rating-list/restaurantPk/?page=pageToDownload";
 
         public static bool CheckNetworkConnection()
         {
