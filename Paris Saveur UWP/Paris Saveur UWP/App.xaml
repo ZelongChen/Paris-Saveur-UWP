@@ -56,27 +56,47 @@
         </DataTemplate>
 
         <DataTemplate x:Key="RestaurantCommentListItemTemplate">
-            <Grid Background="White">
+            <Grid Background="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="UserThumbnail" Source="{Binding User.AvatarUrl}" Grid.Column="0" Margin="5,5,5,5"/>
-                    <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0,15,0,0">
-                        <TextBlock x:Name="UserName" Text="{Binding User.UserName}" FontSize="15" Foreground="Black"/>
-                        <TextBlock x:Name="UserCommentScore" Text="{Binding Score}" FontSize="15" Foreground="Black"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0,5,0,0">
+                        <TextBlock x:Name="UserName" Text="{Binding User.UserName}" FontWeight="Bold" FontSize="20" Foreground="Black"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock x:Name="Star1" Text="{Binding Star1}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star2" Text="{Binding Star2}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star3" Text="{Binding Star3}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star4" Text="{Binding Star4}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="Star5" Text="{Binding Star5}" Foreground="Gold" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                        </StackPanel>
                     </StackPanel>
-                    <TextBlock x:Name="UserCommentDate" Text="{Binding RateDate}" HorizontalAlignment="Right" FontSize="15" Foreground="Black" Grid.Column="2" Margin="0,15,20,0"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Right" Margin="0,5,20,0">
+                        <TextBlock x:Name="UserCommentDate" Text="{Binding RateDate}" HorizontalAlignment="Right" FontSize="15" Foreground="Gray"/>
+                        <TextBlock x:Name="UserCommentPrice" Text="{Binding Consumption}" Margin="0,10,0,0" HorizontalAlignment="Right" FontSize="20" Foreground="Black"/>
+                    </StackPanel>
                 </Grid>
                 <TextBlock x:Name="UserComment" Text="{Binding CommentText}" Grid.Row="1" Foreground="Black" FontSize="15" TextWrapping="Wrap" Padding="10"/>
-                <Rectangle Grid.Row="2"  HorizontalAlignment="Stretch" Height="1" Margin="12,8,12,0" Stroke="{ThemeResource SystemControlForegroundBaseLowBrush}" StrokeThickness="0.5" VerticalAlignment="Bottom"/>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="Like" Text="&#xE8E1;" Foreground="Gray" FontSize="20" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="0,0,5,0"></TextBlock>
+                        <TextBlock x:Name="LikeNb" Text="{Binding NumbersLikeToShow}" Foreground="Gray" FontSize="20" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="40,0,20,0">
+                        <TextBlock x:Name="Reply" Text="&#xE90A;" Foreground="Gray" FontSize="20" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="0,0,5,0"></TextBlock>
+                        <TextBlock x:Name="ReplyNb" Text="{Binding NumbersReplies}" Foreground="Gray" FontSize="20" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <Rectangle Grid.Row="3"  HorizontalAlignment="Stretch" Height="1" Margin="12,8,12,0" Stroke="{ThemeResource SystemControlForegroundBaseLowBrush}" StrokeThickness="0.5" VerticalAlignment="Bottom"/>
             </Grid>
         </DataTemplate>
 

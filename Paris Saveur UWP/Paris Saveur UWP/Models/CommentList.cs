@@ -32,7 +32,6 @@ namespace Paris_Saveur_UWP.Models
             for (int i = 0; i < array.Count; i++)
             {
                 var comment = new Comment(array[i].GetObject());
-                comment.SetupCommentModelToDisplay();
                 _commentCollection.Add(comment);
             }
             var pagination = json.GetNamedObject("pagination");
