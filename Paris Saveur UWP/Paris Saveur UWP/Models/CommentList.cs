@@ -42,5 +42,10 @@ namespace Paris_Saveur_UWP.Models
                 this.MaxPage = (int)pagination.GetNamedNumber("num_pages");
             }
         }
+
+        public void clearComments()
+        {
+            this._commentCollection.Clear();
+        }
     }
 }

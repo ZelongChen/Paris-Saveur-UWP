@@ -24,11 +24,6 @@ namespace Paris_Saveur_UWP
         {
             _restaurant = e.Parameter as Restaurant;
             DownloadRestaurantComments();
-
-            // Register for hardware and software back request from the system
-            SystemNavigationManager systemNavigationManager = SystemNavigationManager.GetForCurrentView();
-            systemNavigationManager.BackRequested += DetailPage_BackRequested;
-            systemNavigationManager.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
         }
 
         private async void DownloadRestaurantComments()
@@ -51,18 +46,7 @@ namespace Paris_Saveur_UWP
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-
-            SystemNavigationManager systemNavigationManager = SystemNavigationManager.GetForCurrentView();
-            systemNavigationManager.BackRequested -= DetailPage_BackRequested;
-            systemNavigationManager.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-        }
-
-        private void OnBackRequested()
-        {
-            // Page above us will be our master view.
-            // Make sure we are using the "drill out" animation in this transition.
-
-            Frame.GoBack(new DrillInNavigationTransitionInfo());
+            _commentList.clearComments();
         }
 
         void NavigateBackForWideState(bool useTransition)
@@ -119,12 +103,5 @@ namespace Paris_Saveur_UWP
             }
         }
 
-        private void DetailPage_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            // Mark event as handled so we don't get bounced out of the app.
-            e.Handled = true;
-
-            OnBackRequested();
-        }
     }
 }

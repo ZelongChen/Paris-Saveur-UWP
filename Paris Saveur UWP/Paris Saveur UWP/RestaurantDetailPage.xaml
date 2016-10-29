@@ -15,9 +15,32 @@
 
     <Page.Resources>
         <DataTemplate x:Name="CommentsTemplate" x:Key="CommentsTemplate">
-            <Grid>
-                <TextBlock Text="Comment" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
+            <ScrollViewer x:Name="RootView"  Background="White">
+                <Grid>
+                    <ListView x:Name="RestaurantCommentList" 
+							Margin="0,0,0,40"
+							ItemsSource="{Binding CommentCollection}"
+							ItemTemplate="{StaticResource RestaurantCommentListItemTemplate}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                    <TextBlock x:Name="NoCommentText"
+                                   x:Uid="NoCommentText"
+							Text=""
+							Foreground="Gray"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center"
+							Visibility="Collapsed"
+							FontSize="22"/>
+                    <ProgressRing x:Name="LoadingRing"
+                            Style="{StaticResource ProgressRingStyle}"
+							Margin="0,0,0,250"
+							VerticalAlignment="Bottom"/>
+                </Grid>
+            </ScrollViewer>
         </DataTemplate>
         <DataTemplate x:Name="ToCommentsTemplate" x:Key="ToCommentTemplate">
             <Grid>
